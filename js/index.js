@@ -220,7 +220,7 @@ roll.innerHTML=roll.innerHTML+roll.innerHTML+roll.innerHTML;
 
 // -------------首页banner4个小元素
 
-
+const gifImage = document.getElementById('gifImage');
 const gifImageSrc = document.querySelector('.hover-gif'); // GIF图片的路径
 const ImageSrc = gifImageSrc.src
 
