@@ -221,12 +221,14 @@ roll.innerHTML=roll.innerHTML+roll.innerHTML+roll.innerHTML;
 // -------------首页banner4个小元素
 
 const gifImage = document.getElementById('gifImage');
+const staImageSrc = document.querySelector('.static-gif'); // 图片的路径
 const gifImageSrc = document.querySelector('.hover-gif'); // GIF图片的路径
+const staSrc = staImageSrc.src
 const ImageSrc = gifImageSrc.src
 
 gifImage.addEventListener('mouseleave', function() {
   // 鼠标离开时重置GIF（通过先设置为静态图片再切换回GIF来实现刷新）
-  gifImage.src = '';
+  gifImage.src = staSrc;
   setTimeout(() => {
     gifImage.src = ImageSrc;
   }, 10); // 短暂的延迟，确保浏览器有时间处理图片更换
