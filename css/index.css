@@ -1,0 +1,1308 @@
+body{
+    background-color:var( --body-bg-color) ;
+}
+/* --------------------------------------头部------------------------------------------ */
+.header{
+    width: 100%;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    z-index: 123;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.00) 100%);
+  }
+  
+.mylogo{
+    width: 84px;
+    height: 24px;
+    background-size: cover;
+    background-image: url(../logo/logo.svg);
+}
+  
+.header .wrapper {
+    height: 100%;
+    /* 垂直居中 */
+    align-items: center;
+    display: flex; 
+    /* 两端对齐 */
+    justify-content: space-between;
+}
+/* 导航 */
+.nav {
+    display: flex;
+  }
+.nav a {
+    font-size:var(--normal-font-size);
+    color: #000;
+    margin: 10px;
+    text-decoration: none;
+    position: relative;
+    margin-left: 5.7rem;  
+}
+.nav a::after{
+    content: '';
+    width: 100%;
+    height: 1px;
+    /* currentColor可以获取当前元素或父元素的color */
+    background-color: currentColor;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* 沿x轴缩放至隐藏 */
+    transform: scaleX(0);
+    /* 设置变换圆点为右 */
+    transform-origin: right;
+    /* 设置变换时的过渡 */
+    transition: transform 0.3s ease-out;
+}
+.nav a:hover::after{
+    /* 沿x轴缩放至显示 */
+    transform: scaleX(1);
+    /* 设置变换圆点为左 */
+    transform-origin: left;
+}
+.burger {
+    display: none;
+}
+
+/* ----------------------------------1.作品集封面----------------------------------- */
+.banner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(201deg, rgba(252, 252, 252, 0.00) 43.24%, rgba(252, 252, 252, 0.60) 83.72%),
+                linear-gradient(272deg, rgba(252, 252, 252, 0.00) 37.92%, rgba(252, 252, 252, 0.60) 64.42%);
+}
+.banner-bg {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url(../img/index/banner-bg.png);
+    background-repeat: no-repeat; 
+    background-size: 200vw 100vh;
+    animation:banner-bg-flow 30s linear infinite;  
+}
+
+@keyframes banner-bg-flow{
+    0%{
+        background-position:0 0;
+
+    }
+    
+    100%{
+        background-position: -100vw 0;
+    }
+
+}
+
+.banner .wrapper {
+    height: 100%;
+    padding-top: 10%;
+    padding-bottom: 4%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;  
+}
+
+.banner-title{
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+    justify-content: center;
+    margin-left: 15%;
+    
+}
+.banner h4 {
+    color: var(--text-color-2);
+    font-size: 22px;
+    font-weight: 500;
+    padding-top: 0.5vw;
+}
+.banner p {
+    width: 60vw;
+    font-size: 16px;
+    color: var(--text-color-2);
+    margin: 1.5vw 0;
+}
+.banner h1 {
+    font-size: 3.5vw;
+    font-family: "Helvetica Neue";
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transform: scaleY(1.2);
+}
+.banner-label {
+    display: inline-flex;
+    height: 32px;
+    transform: rotate(-13deg) ;
+    transition: all 0.6s ease-out;
+    transform-origin: left bottom;
+    padding: 6px 12px;
+    align-items: center;
+    border-radius: 4px;
+    background: #9DFC51;
+    font-size: 1.1rem;
+    color: var(--text-color-1);
+    font-weight: 500;
+    letter-spacing: 0px;
+    position: relative;
+    left: -8%;
+}
+/* ----------gif鼠标移入效果----------- */
+.gif-container {
+    position: absolute;
+    overflow: hidden; /* 防止图片溢出容器 */
+    width: 150px; /* 根据需要调整宽度 */
+    height: 150px;
+    transition: all 0.6s ease-out;
+}
+.gif-container img {
+    position: absolute;
+    width: 100%; /* 根据需要调整宽度 */
+    height: 100%; /* 根据需要调整高度 */
+}
+.static-gif {
+    z-index: 1; /* 确保静态图片在前面 */
+}
+.hover-gif {
+    display: none; /* 默认不显示 */
+    z-index: 2; /* 确保悬停图片在前面 */
+}
+.gif-container:hover .static-gif {
+    display: none; /* 悬停时隐藏静态图片 */
+}
+.gif-container:hover .hover-gif {
+    display: block; /* 悬停时显示悬停图片 */
+}
+
+/* 单独设置 */
+.banner .gif1 {
+    right: 6%;
+    top: 10%;
+}
+
+
+/* -------------个人经验等信息----------------- */
+.banner-information {
+    margin-top: 2.2rem;
+    display: flex;
+}
+.banner li {
+    display: flex;
+}
+.banner .number {
+    font-size: 4.1rem;
+    font-weight: 700;
+    font-family: "DIN-Condensed";
+    background: linear-gradient(180deg, #0C75F0 0%, #30A8FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.banner .unit {
+    /* 上右下左 */
+    margin: 0.7rem 0 0 0.28rem;
+    font-size: 12px;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: top;
+}
+.banner iframe {
+    width: 112px;
+    height: 8px;
+}
+.banner .one {
+    padding-top: 0.4rem;
+    margin-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+.banner .line {
+    width: 1px;
+    height: 2.8rem;
+    background-color: rgba(51, 52, 59, 0.20);
+    margin-top: 0.8rem;
+    margin-left: 1.4rem;
+    margin-right: 1.4rem;
+}
+.banner .two {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+}
+
+.banner-roll {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(90deg, #0160E5 0%, #3EA9EC 69.27%, #AAEBFF 98.96%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.banner-roll .roll{
+    display: flex;
+    position: absolute;
+    left: 0px;
+}
+.banner-roll span {
+    margin:0 38px;
+    text-transform: uppercase;
+    /* 强制文字不换行 */
+    white-space: nowrap;
+}
+/* 文字动画 */
+.banner-roll .roll{  
+    animation:text-roll 30s linear infinite;   
+}
+@keyframes text-roll{
+    0%{
+        transform:  translateX(0px);
+    
+    }
+    
+    100%{
+        transform:  translateX(-1442px);
+    }
+}
+
+
+
+
+/* -------------------------------2.个人资料banner----------------------------- */
+.personal {
+    width: 100%;
+    /* height: 960px; */   
+    background-repeat: no-repeat; 
+    position: relative;
+    overflow: hidden;
+    animation:bg-flow 15s linear infinite;  
+    
+}
+@keyframes bg-flow{
+    0%,100%{
+        background-image: 
+        radial-gradient(closest-side, rgba(53, 179, 211, 0.55), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(235, 105, 78, 0), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgb(100 36 255 / 25%), rgba(235, 105, 78, 0)),
+        url(../img/index/个人信息bg.png);
+        background-size: 600px 600px, 24vw 24vw, 300px 300px, 100% auto;
+        background-position: -225px 18vw, 7vw 16vw, 5vw 16vw, 0 0;
+        
+    }
+    
+    30%{
+        background-image: 
+        radial-gradient(closest-side, rgba(53, 179, 211, 0.55), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(235, 105, 78, 0), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgb(100 36 255 / 25%), rgba(235, 105, 78, 0)),
+        url(../img/index/个人信息bg.png);
+        background-size: 400px 400px, 40vw 40vw, 500px 500px, 100% auto;
+        background-position: 50px 15vw, -100px 16vw, 6vw 15vw, 0 0;
+    }
+    60%{
+        background-image: 
+        radial-gradient(closest-side, rgba(53, 179, 211, 0.55), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(235, 105, 78, 0), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgb(100 36 255 / 25%), rgba(235, 105, 78, 0)),
+        url(../img/index/个人信息bg.png);
+        background-size: 400px 400px, 30vw 30vw, 500px 500px, 100% auto;
+        background-position: -200px 17vw, 0px 16vw, -10vw 21vw, 0 0;
+    }
+}
+
+.personal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.myphoto {
+    width: 16vw;
+    margin: 8vw 0 10px 0;
+}
+
+.name {
+    color: var(--text-color-1);
+    font-size: 1.8rem;
+    font-weight: 800;
+    width: 8em;
+}
+
+
+@keyframes typingWords {
+    0% {
+        width: 0;
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+.skill-tags {
+    display: inline-flex;
+    gap: 12px;
+    /* 自动换行 */
+    flex-wrap: wrap;
+    margin-top: 16px;
+    /* 缓入缓出 */
+	transition: all  ease-out;
+}
+.skill-tags li {
+    display: flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 37px;
+    color: #000;
+    border: 1px solid #000;
+}
+/* -------下载简历按钮样式-------- */
+.button-3d{
+    /* transform-style: preserve-3d; /* 使子元素保持3D空间 */
+    /* perspective: 500px; 设置透视距离 */
+}
+.download-button {
+    /* transform: rotatez(5deg);  */
+    transform-origin: right bottom 0;
+    display: inline-flex;
+    padding: 8px 36px 8px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    color: #fff;
+    background: var(--first-color);
+    box-shadow: 0px 4px 20px 0px rgba(10, 107, 231, 0.40);
+    white-space: nowrap;
+}
+
+@keyframes animate{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 450% 0;
+    }
+}
+
+.personal a:hover{
+    background: linear-gradient(90deg,#03a9f4,#45C496,#03a9f4,#B450CD,#03a9f4);
+    animation: animate 8s linear infinite;
+    background-size: 450%;
+    color: #fff;
+    border: 0px solid #000;
+    box-shadow: 0px 4px 20px 0px rgba(10, 107, 231, 0.40);
+}
+
+/* 下载箭头移动动画 */
+.arrow{
+    width: 30px;
+    height: 15px;
+}
+.arrow iframe {
+    width: 19px;
+    height: 14px;
+    animation:arrow 1s linear infinite;  
+}
+
+@keyframes arrow{
+    0%{
+        transform:  translateX(0px);
+    
+    }
+    50% {
+        transform:  translateX(10px);
+    }
+    100%{
+        transform:  translateX(0px);
+    }
+}
+
+/* ------------下方工作经历------------- */
+.work-experience{
+    margin-top: 40px;
+    margin-bottom: 80px;
+    display: flex;
+    padding: 38px 40px 35px 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    border: 2px solid #FFF;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset;
+    backdrop-filter: blur(3px);
+
+}
+
+/* ------------------时间线样式------------------- */
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.timeline-item {
+    position: relative;
+    width: 30%;
+    /* height: 280px; */
+}
+
+.timeline-item:first-child::before {
+    display: block;
+}
+
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    z-index: 0;
+    width: 1px;
+    height: 98%;
+}
+
+.timeline-item::before,
+hr {
+    /* 时间线 */
+    border-left: 1px dashed #C7D0D9;
+}
+
+.timeline-axis {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    /* 圆点颜色 */
+    background-color: #EDF1F8;
+    color: #5FB878;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.icon {
+    font-family: layui-icon !important;
+    font-size: 16px;
+    font-style: normal;
+}
+
+.timeline-content {
+    padding-left: 25px;
+    /* 内容文字样式 */
+    line-height: 22px;
+    color: #666;
+    top:-10px;
+}
+
+/* 入职时间样式 */
+.timeline h4 {
+  position: relative;
+  margin-bottom: 8px;
+  font-weight: 400;
+  color: #4C5A72;
+}
+/* 标题文字样式 */
+.timeline .company {
+    font-size: var(--middle-font-size);
+    font-weight: 600;
+    display: block;
+    width: 300px;
+    color: #34495E;
+    margin-bottom: 12px;
+}
+/* 职务标签 */
+.company-duties{
+    display: inline-flex;
+    padding: 3px 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    background: rgba(10, 107, 231, 0.10);
+    color: var(--first-color);
+    font-size: var( --small-font-size);
+    margin-bottom: 12px;
+}
+
+.timeline span {
+  color: var(--first-color);
+}
+
+.timeline-content p {
+    color:var( --text-color-2);
+    line-height: 179.5%;
+}
+
+/* 圆点样式 */
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #71A3FF;
+    margin-top: 4px;
+    /* margin-left: 4px */
+}
+/* ----------------------------------------------------- */
+
+.emoji {
+    width: 200px;
+    position: absolute;
+    top: 9vw; 
+    right: 2vw;
+    /* 缓入缓出 */
+	transition: all 0.6s ease-out;
+
+}
+
+/* ----------------------------------------3.目录---------------------------------------- */
+.content {
+
+    width: 100%;
+    padding: 8vw 0 6vw 0;
+    position: relative;  
+    background-repeat: no-repeat;
+    animation:content-flow 5s linear infinite;  
+}
+@keyframes content-flow {
+    0% ,100%{
+        background-image: 
+        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+        background-size:40vmax 40vmax, 30vmax 30vmax, 28vmax 28vmax, 20vmax 20vmax;
+        background-position:-200px 16vw,80vw 20px,70vw 6vw,80vw 12vw; 
+    }
+    30%{
+        background-image: 
+        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0))，
+        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+        background-size:40vw 40vw, 28vmax 28vmax, 32vmax 32vmax, 26vmax 26vmax;
+        background-position:-200px 16vw,60vw 12px,80vw 20vw,70vw 8px,; 
+    }
+    60%{
+        background-image: 
+        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
+        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+        background-size:40vw 40vw, 32vmax 32vmax, 28vmax 28vmax, 30vmax 30vmax;
+        background-position: -200px 16vw, 60vw 12vw, 80vw 4vw,80vw 18vw;
+    }
+}
+h1 {
+    font-size: 3rem;
+}
+.English {
+    margin-top:  -6px;
+    font-size: 3rem;
+    margin-bottom: 3vw;
+    font-family: "DIN-Condensed";
+    letter-spacing: 0.2rem;
+}
+.content-items {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 80px; */
+}
+.content-item {
+    width: 27vw;
+    border-radius: 17px;
+    border: 1.5px solid #FFF;
+    background: #FFF;
+    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset;
+    /* 缓入缓出 */
+	transition: all 0.5s ease-out;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.96);
+}
+
+.content-item:hover {
+    /* 鼠标移入元素沿Y轴上移 */
+    transform: translateY(-10px);
+    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset, 0px 14px 20px 0px rgba(75, 102, 116, 0.15);
+    .content-img img {
+        transform: scale(1.05);        
+    }
+}
+.content-item a {
+    display: block;
+    padding: 15px 15px 24px 15px;
+}
+
+
+.content-img {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.content-img img {
+    width: 100%;
+    transition: all 0.5s ease-in-out 0.1s;
+}
+.content .number {
+    width: 20%;
+    margin-top: 1.2rem;
+    margin-left: 8px;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-top: -2rem;
+    margin-bottom: 0.4vw;
+    margin-left: 8px;
+}
+
+.content-labels {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-left: 8px;
+}
+.content-label {
+    display: flex;
+    padding: 6px 19px;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 22px;
+    border: 1px solid var(--475669, #475669);
+    white-space: nowrap;
+}
+
+/* -----3d靶子------ */
+.target {
+    width: 102px;
+    position: absolute;
+    top: 8.2vw; 
+    left: 12vw;
+    /* 缓入缓出 */
+	transition: all 0.6s ease-out;
+}
+/* -------------------------------------4.3d设计--------------------------------- */
+/* 旋转金属 */
+.metal {
+    position: absolute;
+    width: 10vw;
+    top: 5.8vw;
+    left: 45vw;
+    z-index: 200;
+}
+.design-3d {
+    width: 100%;
+    padding-top: 8vw;
+    text-align: center;
+    position: relative; 
+    overflow: hidden;
+}
+.div-3d {
+    width: 100%;
+    padding-bottom: 10vw;
+    position: relative;
+    /* overflow: hidden; */
+}
+.lists-3d {
+    /* 缓入缓出 */
+	transition: all 0.6s ease-out;
+    display: flex;
+    width: 5000px;
+    margin-left: 7.5vw;
+    gap: 2vw;
+}
+.list-3d {
+    width: 35vw;
+    height: 19vw;
+    border-radius: 8px;
+    box-shadow: 0px 10px 18px 0px rgba(0, 0, 0, 0.16);
+}
+.list-3d video,.list-3d img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.decoration {
+    width: 100%;
+    height: 18vw;
+    background: linear-gradient(90deg, #388FFF 0%, #0A6BE7 100%);
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    img {
+        width: 80vw;
+        margin-top: 4vw;
+    }
+}
+.button2 {
+    display: flex;
+    
+}
+
+.more-button {
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+    left: 48vw;
+    margin-bottom: 8vw;
+    width: 80px;
+    height: 80px;
+    border-radius: 40.5px;
+    background: rgba(10, 107, 231, 0.80);
+    border: 1px solid #FFF;
+    box-shadow: -4px -4px 4.3px 0px #3685EB inset, 0px 7px 6px 0px rgba(10, 107, 231, 0.25);
+
+}
+
+/* -----按钮hover效果------*/
+
+
+@keyframes rotateBackground {
+    0%{
+        transform: rotate(0deg) ;
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+
+  }
+  @keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-360deg);
+    }
+
+  }
+ 
+.more-button:hover {
+    background: radial-gradient(50% 50% at 50% 50%, #0690F4 37.15%, rgba(6, 144, 244, 0.00) 100%), conic-gradient(from 0deg at 50.62% 49.38%, rgba(0, 178, 255, 0.80) 0deg, rgba(0, 255, 209, 0.80) 57.59999871253967deg, rgba(201, 233, 0, 0.80) 125.99999785423279deg, rgba(118, 132, 255, 0.80) 192.60000944137573deg, rgba(255, 67, 214, 0.80) 264.6000051498413deg, rgba(198, 207, 255, 0.80) 318.59999656677246deg, rgba(0, 178, 255, 0.80) 360deg);
+    animation: rotateBackground 8s linear infinite;
+    box-shadow: 0px 7px 6px 0px rgba(10, 107, 231, 0.25);
+    a {
+        animation: rotate 8s linear infinite;
+        color: #fff;
+    }
+}
+.more-button a {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 87.5% */
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* -------------------------------------5.其他设计--------------------------------- */
+.other-designs {
+    padding: 12vw 0 5vw 0;
+    width: 100%;
+    text-align: center;
+    position: relative;  
+    background-image: 
+    radial-gradient(closest-side, rgba(14, 207, 255, 0.2), rgba(235, 105, 78, 0));
+    background-size:800px 800px;
+    background-position:-200px -4vw; 
+    background-repeat: no-repeat;
+}
+.img-roll {
+    border-radius: 32px;
+    background: #161B29;
+    height: 700px;
+    /* 相对定位 */
+    position: relative;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.96);
+    /* 缓入缓出 */
+    transition: all 0.6s  ease-out;
+}
+.fade-in{
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+}
+
+
+.img-roll ul {
+    /* overflow: hidden; */
+    display: flex;
+    position: relative;
+    margin-bottom: 70px;
+    right: 0px;
+}
+.img-roll li{
+    height: 168px;
+    padding-right: 40px;    
+}
+.img-roll img{
+    width: 300px;
+    height: 168px;
+    border-radius: 6px;
+    /* 保持原有尺寸比例，裁切长边 */
+    object-fit: cover;
+    /* 图片定位正中间 */
+    object-position: center;
+}
+
+.img-roll .one {
+    overflow: hidden;
+}
+.text-scroll {
+    margin: 60px 0 40px 0;
+    display: flex;
+    justify-content: center;
+    
+}
+.text-scroll span{
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    color: #fff;
+    font-family: "DIN-Condensed";
+    margin:0 40px;
+    /* 强制大写 */
+    text-transform: uppercase;
+    /* 强制文字不换行 */
+    white-space: nowrap;
+}
+
+/* 向右动画（或js实现） */
+.scroll-right {
+    left:-2000px; 
+}
+.right-list{  
+    animation:scroll-right 30s linear infinite;   
+}
+@keyframes scroll-right{
+    0%{
+        transform:  translateX(0px);
+    
+    }
+    
+    100%{
+        transform:  translateX(2040px);
+    }
+}
+
+/* 向左动画 */
+.left-list{  
+    animation:first 30s linear infinite;   
+}
+
+@keyframes first{
+    0%{
+        transform:  translateX(0px);
+    
+    }
+    
+    100%{
+        transform:  translateX(-2040px);
+    }
+}
+
+/* 鼠标悬停动画停止 */
+/* .img-roll ul:hover {
+    .left-list{
+        animation-play-state: paused;
+    }
+    .right-list{
+        animation-play-state: paused;
+    }
+} */
+/* -----3d钢笔------ */
+.pen {
+    width: 180px;
+    position: absolute;
+    top: 5vw; 
+    left: 50%;
+    transform: translateX(-50%);
+    /* 缓入缓出 */
+	transition: all 0.6s ease-out;
+}
+
+
+
+
+
+/* ------------------------------- 以上为默认样式 ----------------------------------- */
+   /* 一定要将媒体查询的样式放在默认样式之后，否则媒体查询会被默认样式覆盖，也就无法针对不同设备进行变化。 */
+  
+ @media only screen and (max-width: 1620px) {
+    .content h2 {
+        font-size: 1.5rem;
+    }
+    .content-label {
+        padding: 3px 19px;
+    }
+}  
+
+
+/* ---------------------------------------小于等于1190px--------------------------- */
+@media only screen and (max-width: 1190px) {
+    .myvideo {
+        height: auto;
+    }
+    .banner {
+        height: 49vw;
+        position: relative;
+    }
+    .content-labels {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+}
+/* ---------------------------------------小于等于1100px--------------------------- */
+@media only screen and (max-width: 1100px) {
+
+    body {
+        background-position: -225px 66vw,80vw 115vw,-225px 200vw;
+    }
+    .skill-tags li {
+        font-size: var(--small-font-size);
+    }
+    .emoji {
+        width: 160px;
+        top: 7vw;
+    }
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+    }
+    .timeline-item{
+        width: 100%;
+        padding-bottom: 24px;
+    }
+    .timeline-item::before {
+        height: 100%;
+    }
+    .content-item a{
+        padding: 10px 10px 15px 10px;
+    }
+    h1,.English {
+        font-size: 2.5rem;
+    }
+    .English {
+        margin-bottom: 5vw;
+    }
+    .target {
+        width: 84px;
+    }
+    .pen {
+        width: 140px;
+    }
+
+}
+
+
+/* ------------------------------小于等于768px------------------------------- */
+@media only screen and (max-width: 768px) {
+    /* 头部导航样式 */
+    .header {
+        background-color: #fff;
+        height: 48px;
+        box-shadow: 0px 1px 0px 0px #EDEFF2;
+    }
+    .wrapper {
+        width: 90%;
+    }
+    .mylogo {
+        width: 56px;
+        height: 16px;
+        background-image: url(../logo/logo.svg);
+    }
+
+    .burger {
+        display: block;
+        width: 17px;
+        height: 17px;
+        background-image: url(../img/index/更多.svg);
+    }
+    .burger.close {
+        background-image: url(../img/index/关闭.svg);
+    }
+    .header.open .nav {
+        position: absolute;
+        left: 0;
+        top: 49px;
+        width: 100vw;
+        height: 100vh;
+        background-color: #fff;
+        color: var(--first-color);
+        display: block;
+        padding: 0 5%;
+        opacity: 0;
+        animation: slideDown 0.6s ease-out forwards;
+    }
+    @keyframes slideDown {
+        from {
+          height: 0;
+          opacity: 0;
+        }
+        to {
+          height: 100vh;
+          opacity: 1;
+        }
+      }
+      @keyframes bg-flow{
+        0%,100%{
+            background-image: 
+            url(../img/index/个人信息bg.png),
+            radial-gradient(closest-side, rgba(53, 179, 211, 1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(99, 53, 211, 0.4), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.9), rgba(235, 105, 78, 0));
+            background-size: 100% auto,600px 600px, 400px 400px,500px 500px;
+            background-position:0 0,-225px 16vw,10vw 12vw,5vw 16vw; 
+        }
+        
+        30%{
+            background-image: 
+            url(../img/index/个人信息bg.png),
+            radial-gradient(closest-side, rgba(53, 179, 211, 1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(99, 53, 211, 0.4), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.9), rgba(235, 105, 78, 0));
+            background-size: 100% auto,500px 500px, 440px 440px,450px 450px;
+            background-position:0 0,14vw 8vw,-200px 60px,20vw 13vw; 
+        }
+        60%{
+            background-image: 
+            url(../img/index/个人信息bg.png),
+            radial-gradient(closest-side, rgba(53, 179, 211, 1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(99, 53, 211, 0.4), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.9), rgba(235, 105, 78, 0));
+            background-size: 100% auto,600px 600px, 300px 300px,600px 600px;
+            background-position:0 0,20vw 16vw,12vw 3vw,-220px 30px; 
+        }
+    }
+
+    @keyframes content-flow {
+        0% ,100%{
+            background-image: 
+            radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+            background-size:440px 440px, 440px 440px, 300px 300px, 440px 440px;
+            background-position:-200px 16vw,80vw 20px,10vw 6vw,80vw 12vw; 
+        }
+        30%{
+            background-image: 
+            radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0))，
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+            background-size:440px 440px, 640px 640px, 500px 500px, 300px 300px;
+            background-position:-200px 16vw,20vw 12px,30vw 40vw,70vw 8px,; 
+        }
+        60%{
+            background-image: 
+            radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
+            radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
+            background-size:440px 440px, 460px 460px, 350px 350px, 300px 300px;
+            background-position: -200px 16vw, 60vw 12vw, 80vw 4vw,80vw 18vw;
+        }
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .nav li {
+        margin-top: 40px;
+        
+    }
+    .nav a {
+        font-size: 1.2rem;
+        margin-left: 0;
+    }
+    
+
+
+    /* banner样式 */
+    .myvideo {
+        top: 48px;
+    }
+    .banner {
+        top: 48px;
+        height:57vw;
+        position: relative;
+    }
+    .banner .wrapper {
+        padding-top: 10%;
+    }
+    .banner-phone {
+        display: none !important;
+    }
+    .banner-information {
+        width: 100%;
+        height: 60px;
+        margin: auto;
+        border: 1px solid #FFF;
+        background: linear-gradient(180deg, #EAEEF5 0%, #F8F9FC 100%);
+        box-shadow: 0px 7px 20px 0px rgba(102, 119, 124, 0.25);
+        z-index: 20;
+        position: absolute;
+        justify-content: center;
+        overflow: hidden;
+        bottom: -2%;
+        left: 0%;
+    }
+    .banner-information li {
+        margin-left: 5%;
+        width: 45%;
+        overflow: hidden;
+        margin-top: 4px;
+    }
+    .banner .number {
+        font-size: 3rem;
+    }
+    .banner .unit {
+        margin: 1.7rem 0 0 0.3rem;
+        font-size: var(--small-font-size);
+    }
+    .banner iframe {
+        display: none;
+    }
+    .banner .one {
+        align-items: flex-start;
+        flex: 1;
+    }
+    .banner .line {
+        margin: auto 0;
+    }
+    .banner .none {
+        display: none !important;
+    }
+    .information-number {
+        display: flex;
+    }
+    .banner p {
+        /* 禁止换行 */
+        white-space: nowrap;
+        /* 超出省略 */
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: var(--small-font-size);
+    }
+    .banner-img {
+        position: absolute;
+        top: 52%;
+        width: 2vw;
+    }
+
+    .content-items{
+        flex-wrap: wrap;
+        /* margin-bottom: 24px; */
+        gap: 20px;
+    }
+    .content-item {
+        width: 100%;
+    }
+    .content-item:hover {
+        /* 鼠标移入元素沿Y轴上移 */
+        transform: translateY(0px);
+        box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset, 0px 14px 20px 0px rgba(75, 102, 116, 0.15);
+        .content-img img {
+            transform: scale(1);        
+        }
+    }
+    .content-item a{
+        padding: 15px 15px 24px 15px;
+    }
+    .content h2 {
+        margin-top: -2.5rem;
+        margin-bottom: 1vw;
+    }
+    .emoji {
+        width: 146px;
+        top: 21vw;
+    }
+    .myphoto {
+        width: 34vw;
+        margin: 24vw 0 10px 0;
+    }
+    .work-experience {
+        padding: 30px 24px 30px 24px;
+    }
+    .other-designs {
+        height: 900px;
+    }
+    .text-scroll span {
+        font-size: 2rem;
+        margin: 0 10px;
+    }
+
+}
+
+/* ---------------------------------小于等于465px------------------------------- */
+@media only screen and (max-width: 465px) {
+    .banner {
+        height: 61vw;
+    }
+    .personal-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .download-button {
+        margin-top: 24px;
+    }
+    .skill-tags{
+        white-space: nowrap;
+        /* flex-wrap: nowrap; */
+    }
+    .emoji {
+        width: 122px;
+    }
+    .target {
+        width: 70px;
+        top: 10.2vw;
+    }
+    .pen {
+        width: 112px;
+        top: -8vw;
+    }
+
+
+}
+/* ---------------------------------------小于等于386px--------------------------- */
+@media only screen and (max-width: 386px) {
+    .banner p {
+        width: 80px;
+    }
+    .banner {
+        height: 62vw;
+    }
+    .timeline-item {
+        width: 82% ;
+    }
+    .myphoto {
+        margin: 30vw 0 10px 0;
+    }
+
+
+
+}

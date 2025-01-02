@@ -1,0 +1,69 @@
+
+.bg{
+    background-color: #47f6ff;
+    display: flex;
+    height: 100%;
+    justify-content:center;
+    align-items :center;
+}
+.card {
+
+    position: relative;
+    width: 300px;
+    height: 450px;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+  }
+
+
+  .front,
+  .back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 30px;
+  }
+  .gif-container {
+    position: relative;
+    overflow: hidden; /* 防止图片溢出容器 */
+    width: 100px; /* 根据需要调整宽度 */
+    height: 100px;
+}
+
+.gif-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px; /* 根据需要调整宽度 */
+    height: 100px; /* 根据需要调整高度 */
+}
+
+.static-gif {
+    z-index: 1; /* 确保静态图片在前面 */
+}
+
+.hover-gif {
+    display: none; /* 默认不显示 */
+    z-index: 2; /* 确保悬停图片在前面 */
+}
+
+.gif-container:hover .static-gif {
+    display: none; /* 悬停时隐藏静态图片 */
+}
+
+.gif-container:hover .hover-gif {
+    display: block; /* 悬停时显示悬停图片 */
+}
