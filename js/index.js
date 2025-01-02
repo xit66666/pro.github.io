@@ -228,7 +228,7 @@ const ImageSrc = gifImageSrc.src
 
 gifImage.addEventListener('mouseleave', function() {
   // 鼠标离开时重置GIF（通过先设置为静态图片再切换回GIF来实现刷新）
-  gifImage.src = staSrc;
+  gifImage.src = ‘’;
   setTimeout(() => {
     gifImage.src = ImageSrc;
   }, 10); // 短暂的延迟，确保浏览器有时间处理图片更换
