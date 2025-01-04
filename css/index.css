@@ -132,6 +132,7 @@ body{
     letter-spacing: 1px;
     text-transform: uppercase;
     transform: scaleY(1.2);
+    opacity: 1;
 }
 .banner-label {
     display: inline-flex;
@@ -151,37 +152,44 @@ body{
     left: -8%;
 }
 /* ----------gif鼠标移入效果----------- */
-.gif-container {
+.all-gif {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    overflow: hidden; /* 防止图片溢出容器 */
-    width: 150px; /* 根据需要调整宽度 */
-    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3% 4% 6% 5%;
     transition: all 0.6s ease-out;
 }
-.gif-container img {
-    position: absolute;
-    width: 100%; /* 根据需要调整宽度 */
-    height: 100%; /* 根据需要调整高度 */
-}
-.static-gif {
-    z-index: 1; /* 确保静态图片在前面 */
-}
-.hover-gif {
-    display: none; /* 默认不显示 */
-    z-index: 2; /* 确保悬停图片在前面 */
-}
-.gif-container:hover .static-gif {
-    display: none; /* 悬停时隐藏静态图片 */
-}
-.gif-container:hover .hover-gif {
-    display: block; /* 悬停时显示悬停图片 */
+.all-gif .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between
 }
 
-/* 单独设置 */
-.banner .gif1 {
-    right: 6%;
-    top: 10%;
+.all-gif .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: space-between
 }
+
+
+/* 雪碧图 */
+.sprite-container {
+    width: 180px; /* Adjust to your frame width */
+    height: 180px; /* Adjust to your frame height */
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size:auto 100%;
+} 
+#sprite2 {
+    margin-top: 1%;
+}
+#sprite3 {
+    margin-left: 5%;
+}
+
 
 
 /* -------------个人经验等信息----------------- */
@@ -576,37 +584,16 @@ hr {
     padding: 8vw 0 6vw 0;
     position: relative;  
     background-repeat: no-repeat;
-    animation:content-flow 5s linear infinite;  
+    background-size:25vmax 22vmax,30vmax 30vmax, 100% auto, 100% auto;
+    background-image: url();
+    background-position:3px 25vw,80vw 4vw,0 0,0 0; 
+    background-image:    
+    radial-gradient(closest-side, rgba(36 184 255 / 40%), rgba(235, 105, 78, 0)),
+    radial-gradient(closest-side, rgba(47 89 255 / 20%), rgba(235, 105, 78, 0)),
+    url(../img/index/content-bg.png),
+    linear-gradient(180deg, rgba(216, 238, 255, 0.00) 0%, #cee1f0 100%);
 }
-@keyframes content-flow {
-    0% ,100%{
-        background-image: 
-        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
-        background-size:40vmax 40vmax, 30vmax 30vmax, 28vmax 28vmax, 20vmax 20vmax;
-        background-position:-200px 16vw,80vw 20px,70vw 6vw,80vw 12vw; 
-    }
-    30%{
-        background-image: 
-        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0))，
-        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
-        background-size:40vw 40vw, 28vmax 28vmax, 32vmax 32vmax, 26vmax 26vmax;
-        background-position:-200px 16vw,60vw 12px,80vw 20vw,70vw 8px,; 
-    }
-    60%{
-        background-image: 
-        radial-gradient(closest-side, rgba(14, 207, 255, 0.1), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(147, 52, 255, 0.2), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(52, 184, 255, 0.4), rgba(235, 105, 78, 0)),
-        radial-gradient(closest-side, rgba(255, 236, 31, 0.2), rgba(235, 105, 78, 0));
-        background-size:40vw 40vw, 32vmax 32vmax, 28vmax 28vmax, 30vmax 30vmax;
-        background-position: -200px 16vw, 60vw 12vw, 80vw 4vw,80vw 18vw;
-    }
-}
+
 h1 {
     font-size: 3rem;
 }
@@ -627,17 +614,17 @@ h1 {
     border-radius: 17px;
     border: 1.5px solid #FFF;
     background: #FFF;
-    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset;
     /* 缓入缓出 */
 	transition: all 0.5s ease-out;
     opacity: 0;
     transform: translateY(-20px) scale(0.96);
+    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset, 0px 14px 20px 0px rgba(75, 102, 116, 0.1);
+
 }
 
 .content-item:hover {
     /* 鼠标移入元素沿Y轴上移 */
     transform: translateY(-10px);
-    box-shadow: 0px 0px 30px 0px rgba(225, 232, 251, 0.80) inset, 0px 14px 20px 0px rgba(75, 102, 116, 0.15);
     .content-img img {
         transform: scale(1.05);        
     }
@@ -710,6 +697,7 @@ h1 {
     text-align: center;
     position: relative; 
     overflow: hidden;
+    background: linear-gradient(180deg, #cee1f0 0%, #cee1f0 100%);
 }
 .div-3d {
     width: 100%;
