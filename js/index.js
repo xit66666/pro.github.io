@@ -1,13 +1,14 @@
 // 首页动效
 gsap.from('.show', {
-    y: -30,
-    scale:1.05,
+    y: -10,
+    scale:(1.05,1.25),
     duration: 1,
+    opacity: 0,
     ease: 'power1.out',
 });
-gsap.from('.show2', {
-    y: -30,
-
+gsap.to('.show2', {
+    y: 15,
+    opacity: 1,
     duration: 1,
     delay:0.2,
     ease: 'power1.out',
@@ -127,15 +128,6 @@ ScrollTrigger.create({
 
 });
 
-ScrollTrigger.create({
-    trigger:'.banner',// 触发对象
-    start:'top top',//开始位置
-    end:'+=200',//结束位置
-    scrub:true,//随着鼠标上下滚动显示出现
-    // pin:true,//到end之前是固定的，end之后开始走
-    animation:
-    gsap.to('.gif-container',{ y: 15,duration: 2,ease: 'power3.inout',})
-});
 
 // -----------------------------------emoji动效--------------------------------------
 ScrollTrigger.create({
@@ -220,16 +212,66 @@ roll.innerHTML=roll.innerHTML+roll.innerHTML+roll.innerHTML;
 
 // -------------首页banner4个小元素
 
-const gifImage = document.getElementById('gifImage');
-// const staImageSrc = document.querySelector('.static-gif'); // 图片的路径
-const gifImageSrc = document.querySelector('.hover-gif'); // GIF图片的路径
-// const staSrc = staImageSrc.src
-const ImageSrc = gifImageSrc.src
+  // 获取div元素
+  var myDiv = document.getElementById('sprite1');
+  // 获取div的宽度
+  var divWidth = myDiv.offsetWidth;
 
-gifImage.addEventListener('mouseleave', function() {
-  // 鼠标离开时重置GIF（通过先设置为静态图片再切换回GIF来实现刷新）
-  gifImage.src = '';
-  setTimeout(() => {
-    gifImage.src = ImageSrc;
-  }, 10); // 短暂的延迟，确保浏览器有时间处理图片更换
+document.addEventListener('DOMContentLoaded', function() {
+    const sprites = document.querySelectorAll('.sprite-container');
+  
+    sprites.forEach(sprite => {
+        const frames = parseInt(sprite.getAttribute('data-frames'), 10);
+        const spriteImage = sprite.getAttribute('data-sprite');
+        const frameWidth = divWidth; // Adjust to your frame width
+        let currentFrame = 0;
+        let interval;
+        let playingForward = true;
+  
+        sprite.style.backgroundImage = `url('${spriteImage}')`;
+  
+        function updateFrame() {
+            sprite.style.backgroundPositionX = `-${currentFrame * frameWidth}px`;
+        }
+  
+        function animateSprite() {
+            if (playingForward) {
+                currentFrame++;
+                if (currentFrame >= frames) {
+                    currentFrame = frames - 1;
+                    clearInterval(interval);
+                    return;
+                }
+            } else {
+                currentFrame--;
+                if (currentFrame < 0) {
+                    currentFrame = 0;
+                    clearInterval(interval);
+                    return;
+                }
+            }
+            updateFrame();
+        }
+  
+        sprite.addEventListener('mouseenter', function() {
+            playingForward = true;
+            currentFrame = 0;
+            interval = setInterval(animateSprite, 30); // Adjust animation speed here
+        });
+  
+        sprite.addEventListener('mouseleave', function() {
+            playingForward = false;
+            interval = setInterval(animateSprite, 30); // Adjust animation speed here
+        });
+    });
+  });
+  
+  ScrollTrigger.create({
+    trigger:'.banner',// 触发对象
+    start:'top top',//开始位置
+    end:'+=500',//结束位置
+    scrub:true,//随着鼠标上下滚动显示出现
+    // pin:true,//到end之前是固定的，end之后开始走
+    animation:
+    gsap.to('.all-gif',{ y: 15,duration: 2,ease: 'Power1.easeInOut',})
 });
