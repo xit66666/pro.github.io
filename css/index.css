@@ -1,3 +1,4 @@
+
 body {
     background-color:var(--bg-color-light);
     overflow-x: hidden;
@@ -987,7 +988,7 @@ section {
 .other-text .strong {
 	display: inline-block;
 	color: transparent;
-	background-image: url(../img/index/circle-bg_1.svg);
+	background-image: url(https://assets.codepen.io/165585/circle-bg_1.svg);
 	background-color: hsla(240, 25%, 25%, 1);
 	background-size: 350px;
 	background-position: 50% 80%;
