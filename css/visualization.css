@@ -157,7 +157,7 @@ video {
     width: 100%;
     bottom:0;
     left: 0;
-    mix-blend-mode: lighten;
+    mix-blend-mode: plus-lighter;
     -webkit-mix-blend-mode: lighten;
 }
 
@@ -171,7 +171,9 @@ video {
 /* ---------------------------------------2----------------------------------- */
 .pic2-bg {
     position: relative;
-    background-image:url(../img/visualization/bg1.png);
+    background-image:
+    url(https://framerusercontent.com/images/Zdzy6sQBCgi4bS1jKLZ9RNAb4V4.png?scale-down-to=4096),
+    url(https://framerusercontent.com/images/EihU1nrO2aDTddEjp2OD6umSk.png?scale-down-to=2048);
     background-size: 100% auto;
     background-repeat:no-repeat;
     width: 100%;
@@ -247,7 +249,9 @@ video {
 /* ---------3-------- */
 .pic3 {
     height: 112vw;
-    background-image: url(../img/visualization/文字3.png),url(../img/visualization/bg3.png);
+    background-image: 
+    url(https://framerusercontent.com/images/mVyfyxQZDBc6t6CF7JiCKCjS4.png?scale-down-to=4096),
+    url(https://framerusercontent.com/images/XHAJdxOKA98bw3Ag6gYHnGal38U.png?scale-down-to=2048);
 }
 
 
@@ -255,14 +259,14 @@ video {
 /* ---------4-------- */
 .pic4 {
     height: 56vw;
-    background-image: url(../img/visualization/bg4.png);
+    background-image: url(https://framerusercontent.com/images/wrZX9rWZA3nNfE3P2hU8S6paSH4.png?scale-down-to=2048);
 }
 
 /* ---------机器人/东宝-------- */
 .robot {
     height: 52vw;
     overflow: hidden;
-    background-image: url(../img/visualization/8.png);
+    background-image: url(https://framerusercontent.com/images/a0Wm89cmKcHTR3nKb9vZoM6uL3g.png?scale-down-to=2048);
 }
 .robot .wrapper {
     display: flex;
@@ -272,7 +276,7 @@ video {
 .pad-bg {
     width: 65vw;
     height: 37vw;
-    background-image: url(../img/visualization/pad-bg.png);
+    background-image: url(https://framerusercontent.com/images/TiGgm4Vyux3LJU37e3Xz6qFLI.png?scale-down-to=1024);
     background-size: cover;
     display: flex;
     justify-content: center;
