@@ -7,62 +7,47 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="./libs/ScrollTrigger.min.js"></script>
     <script src="./libs/gsap.min.js"></script>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/SplitText3.min.js'></script>
     <script src="./libs/scrollReveal/scrollreveal.min.js"></script>
+    <script src="//at.alicdn.com/t/c/font_4624662_vlkqnnei8en.js"></script>
+    <!-- <script src="./font/iconfont/iconfont.js"></script> -->
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
-    <!-- <link rel="stylesheet" href="./css/iconfont.css"> -->
 </head>
 <body>
     <div id="cursor-dot"></div>
     <div id="cursor-circle"></div>
     <!---------------------------- 头部 ---------------------------->
     <div class="header">
-        <div class="wrapper">
-            <!-- logo -->
-            <a href="./index.html" class="mylogo"></a>
-            <!-- 导航 -->
-            <ul class="nav">
-                <li><a href="visualization.html">可视化</a></li>
-                <li><a href="tob.html">B端</a></li>
-                <li><a href="app.html">APP</a></li>
-            </ul>
-            <!-- 手机显示按钮 -->
-            <div class="burger"></div>
-        </div>
+      <div class="wrapper">
+          <!-- logo -->
+          <a href="./index.html" class="mylogo"></a>
+          <!-- 导航 -->
+          <ul class="nav">
+              <li><a href="visualization.html">可视化</a></li>
+              <li><a href="web.html">pc端</a></li>
+              <li><a href="moble.html">APP</a></li>
+              <li><a href="photo.html" target="_blank">Photo</a></li>
+          </ul>
+          <!-- 手机显示按钮 -->
+          <div class="burger">
+            <div class="line line-top smooth-animation"></div>
+            <div class="line line-middle "></div>
+            <div class="line line-bottom smooth-animation"></div>
+          </div>
+      </div>
     </div> 
     <!------------------------ 1.作品集封面 ---------------------------->
 
     <div class="banner">
-        <div class="all-gif">
-            <div class="sprite-container sprite1" id="sprite1" data-frames="36" data-sprite="./img/index/gif/科技方形_sprites.png"></div>
-            <div class="sprite-container sprite2" id="sprite1" data-frames="34" data-sprite="./img/index/gif/魔方_sprites.png"></div>        
-            <div class="sprite-container sprite3" id="sprite3" data-frames="41" data-sprite="./img/index/gif/油漆桶_sprites.png"></div>
-            <div class="sprite-container sprite4" id="sprite4" data-frames="41" data-sprite="./img/index/gif/油漆桶_sprites.png"></div>       
+        <div class="wrapper">
+            <h1 class="split-animate" >Hi,  I'm  <span class="highlight">XiTing</span> </h1> 
+            <h1 class="split-animate" >UI <span style="font-size: 2.2vw ;">/</span> UX  Designer</h1> 
+            <h4 >Welcome to my personal website</h4>
         </div>
-    
-        <img src="./img/index/tips.png" alt="" class="tips">
-        <div class="wrapper "> 
-                <div class="banner-title show">
-                    <h1  >hello,i’m xiting. </h1> 
-                    <div class="banner-label">UI / UX DESIGN </div>              
-                </div>
 
-                <h4 class="show">Welcome to my personal website</h4>
-                <p class="show">Hello everyone, my name is CaiCai. l am an interdisciplinary product manager who ispassionate about interface design, experience design and product design. Atpresent, l work as a product manager at Ant Group and also serve as the leader of aproduct team focusing on Al and research and development efficiency</p>
-                <div class="labels show">
-                    <iframe src="./img/index/banner-svg/label-imagination.svg" frameborder="0" class="rectangles imagination"></iframe>
-                    <iframe src="./img/index/banner-svg/icon1.svg" frameborder="0" class="circles smile"></iframe>
-                    <!-- <iframe src="./img/index/banner-svg/icon2.svg" frameborder="0" class="circles internet"></iframe> -->
-                    <iframe src="./img/index/banner-svg/icon3.svg" frameborder="0" class="circles lamp"></iframe>
-                    <iframe src="./img/index/banner-svg/icon4.svg" frameborder="0" class="circles design-lable"></iframe>
-                    <iframe src="./img/index/banner-svg/icon5.svg" frameborder="0" class="circles design-pen"></iframe>
-                    <!-- <iframe src="./img/index/banner-svg/label-explor.svg" frameborder="0" class="rectangles exploration"></iframe> -->
-                    <iframe src="./img/index/banner-svg/lable-creativity.svg" frameborder="0" class="rectangles creativity"></iframe>
-                </div>
-
-        </div>
         <div class="banner-roll">
-            <div class="roll">
+            <div class="roll" >
                 <span>㋡&nbsp&nbsp 3d design</span>
                 <span>◎&nbsp&nbsp UI&UX  DESIGN</span>
                 <span>✿&nbsp&nbsp WEB Design</span>
@@ -77,314 +62,360 @@
     </div>
     <!------------------------- 2.个人信息 ----------------------------->
     <div class="personal">
-        <img src="./img/index/3d表情.png" alt="" class="emoji">
-        <!-- 上方个人信息 -->
-        <div class="personal-top wrapper">
-            <div class="person-left">
+        <p class="Stroke">experience</p>
+  
+        <div class="wrapper">
+            <div class="personal-left">
                 <img src="./img/index/个人照片.png" alt="" class="myphoto">
-                <h2 class="name">席婷，UI设计师</h2>
+                <!-- <h2 class="name">席婷，UI设计师</h2> -->
                 <ul class="skill-tags ">
-                    <li class="skill-tag">8年UI设计经验</li>
                     <li class="skill-tag">三维设计</li>
                     <li class="skill-tag">动效设计</li>
                     <li class="skill-tag">交互设计</li>
+                    <li class="skill-tag">AI设计</li>
                 </ul>
+                <p class="personal-introduction ">I'm XiTing, a passionate and creative UI/UX designer. <br>I specialize in 
+                    <span class="highlight">data visualization</span>
+                    and digital product design 
+                    <span class="highlight">(apps/websites).</span>
+                </p>
+                <h4 class="personal-introduction text-regular ">Outside of work, I'm obsessed with modeling and motion design. Exploring the creative boundaries in 3D space and dynamic rhythms.</h4>
+                <!-- <div class="personal-tips">
+                    <img src="./img/index/dot-pic.png" alt="">
+                    <p>I am excited to apply my knowledge and creativity to solve complex design challenges and create intuitive and visually appealing interfaces.</p>
+                </div> -->
+                <div class="download-btn-container">
+                    <a href="" class="download-btn">
+                        <div class="arrow">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-arrow-downward"></use>
+                            </svg>
+                            <div class="bottom-line"></div>
+                        </div>
+                        Download CV
+                    </a>
+                </div>
             </div>
-            <div class="button-3d">
-                <a href="" class="download-button">
-                    <div class="arrow">
-                        <i class="iconfont" >&#xe7fb;</i>
-                        <!-- <span class="iconfont .icon-jiantou1"></span> -->
 
-                        <!-- <iframe src="./img/index/arrow-white.svg" frameborder="0"></iframe> -->
-                    </div>
-                    点击下载pdf简历
-                </a>
-            </div>
+
         </div>
-        <!-- 下方工作经历 -->
-        <div class="work-experience wrapper">
-            <!-- 　时间线 -->
-            <ul class="timeline">    
-                <li class="timeline-item">
-                    <i class="icon timeline-axis circle"></i>
-                    <div class="timeline-content">
-                        <h4 class="show">2022/03  -  至今</h4>
-                        <div class="company show">武汉光谷信息技术股份有限公司</div>
-                        <div class="company-duties show">UI设计师</div>
-                        
-                        <p class="show">1.主导设定整体视觉风格和UI设计，包括界面设计<span>图标设计</span>、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
-                            <br><span></span>
-                            2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
-                            <br>
-                            3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等
-                        </p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <i class="icon timeline-axis circle"></i>
-                    <div class="timeline-content">
-                        <h4 class="show2">2022/03  -  至今</h4>
-                        <div class="company show2">武汉光谷信息技术股份有限公司</div>
-                        <div class="company-duties show2">UI设计师</div>
-                        
-                        <p class="show2">1.主导设定整体视觉风格和UI设计，包括界面设计<span>图标设计</span>、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
-                            <br><span></span>
-                            2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
-                            <br>
-                            3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等
-                        </p>
-                    </div>
-                </li>
-                <li class="timeline-item">
-                    <i class="icon timeline-axis circle"></i>
-                    <div class="timeline-content">
-                        <h4 class="show3">2018/07  -  2022/03</h4>
-                        <div class="company show3">武汉小象智云科技有限公司</div>
-                        <div class="company-duties show3">UI设计师</div>
-                        
-                        <p class="show3">1.主导设定整体视觉风格和UI设计，包括界面设计<span>图标设计</span>、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
-                            <br><span></span>
-                            2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
-                            <br>
-                            3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等
-                        </p>
-                    </div>
-                </li>
-
-
-
-            </ul>
+        <!-- 右侧卡片 -->
+        <div class="card-container">
+            <div class="card card-yellow" style="--i: -2;">
+            <div class="card-number">
+                <h1>54</h1>
+                <span>项目</span>
+            </div>
+            <p>We have successfully completed a total of 300+ projects</p>
+            <div class="sprite-3 sprite"></div>
+            </div>
+                <div class="card card-blue" style="--i: -1;">
+            <div class="card-number">
+                <h1>14</h1>
+                <span>设计框架</span>
+            </div>
+            <p>We have successfully completed a total of 300+ projects</p>
+            <div class="sprite-2 sprite"></div>
+            </div>
+            <div class="card card-white" style="--i: 0;">
+            <!-- 第一张卡     -->
+            <div class="card-number">
+                <h1>8</h1>
+                <span>年</span>
+            </div>
+            <p>I currently work as a UI designer with 8 years of experiences</p>
+            <div class="sprite-1 sprite"></div>
+            </div>
         </div>
     </div>
-    <!--------------------------- 3.目录 ----------------------------->
-    <div class="content">
-        <div class="text-box">
-            <div class="text-incline">
-                <p class="Stroke p-right">ation ✦ app ✦ web ✦ Visualization</p>
-                <p class="Stroke p-left">Visualization ✦ Visualization ✦ app ✦ web ✦ Visualization</p>    
+        <!-- 个人经历 -->
+    <div class="experience-container wrapper">
+        <div class="experience-title">
+            <span class="highlight">{ </span>
+            <span>experience</span>
+            <span class="highlight"> }</span>
+        </div>
+        <div class="experience-section show">
+            <div class="section-header">
+                <div class="left">
+                    <div class="employment-time">2021.3-present</div>
+                    <div class="company-name">武汉光谷信息技术股份有限公司</div>
+                    <p>UI/UX designer</p>
+                </div>
+                <div class="icon-plus">
+                    <svg class="icon icon-transverse" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg> 
+                    <svg class="icon icon-vertical" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg>           
+                </div>
+            </div>
+            <div class="section-content">
+                
+                    <p>1.主导设定整体视觉风格和UI设计，包括界面设计、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
+                        2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
+                        3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等</p>
+                
             </div>
         </div>
 
-        <img src="./img/index/3d靶子.png" alt="" class="target">
+        <div class="experience-section show">
+            <div class="section-header">
+                <div class="left">
+                    <div class="employment-time">2021.3-present</div>
+                    <div class="company-name">武汉光谷信息技术股份有限公司</div>
+                    <p>UI/UX designer</p>
+                </div>
+                <div class="icon-plus">
+                    <svg class="icon icon-transverse" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg> 
+                    <svg class="icon icon-vertical" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg>           
+                </div>
+            </div>
+            <div class="section-content">
+                
+                    <p>1.主导设定整体视觉风格和UI设计，包括界面设计、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
+                        2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
+                        3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等</p>
+                
+            </div>
+        </div>
+
+        <div class="experience-section show">
+            <div class="section-header">
+                <div class="left">
+                    <div class="employment-time">2021.3-present</div>
+                    <div class="company-name">武汉光谷信息技术股份有限公司</div>
+                    <p>Senior UX/UI Designer</p>
+                </div>
+                <div class="icon-plus">
+                    <svg class="icon icon-transverse" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg> 
+                    <svg class="icon icon-vertical" aria-hidden="true">
+                        <use xlink:href="#icon-jianhao"></use>
+                    </svg>           
+                </div>
+            </div>
+            <div class="section-content">
+                
+                    <p>1.主导设定整体视觉风格和UI设计，包括界面设计、图标设计、配色，负责参与设计体验、交互流程和设计规范的制定
+                        2.跟进产品设计、开发和上线的整个过程，跟进设计还原度，保障产品设计品质的有效落地
+                        3.根据公司品牌策略，设计各种日常运营活动、banner、海报、单页等</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------- 3.目录 ----------------------------->
+    <div class="content basic-padding">
         <div class="wrapper">
-            <h1 class="all-title">content</h1>
-            <p class="Subtitle">作品目录</p>  
+
+            <h1 class="section-title">Selected works</h1>
+            <div class="subtitle-box">
+                <span class="highlight">⊹</span>
+                <span class="section-Subtitle">精选作品合集</span>
+            </div>
             <ul class="content-items">
-                <!-- APP -->
-                <li class="content-item item-1">
-                    <a href="visualization.html">
-                        <div class="content-img">
-                            <img src="./img/index/1APP.png" alt="">
-                        </div>
-                        <div class="design-title">
-                            <div class="title">
-                                <img src="./img/index/数字1.png" alt="" class="number">
-                                <h2>可视化</h2>
-                            </div>
-                            <div class="item-arrow">
-                                <div class="arrow-gif">
-                                    <i class="iconfont" >&#xe7fa;</i>
-                                </div>
-                            </div>                          
-                        </div>
-                        <ul class="content-labels">
-                            <li class="content-label">数字化配电房运维平台</li>
-                            <li class="content-label">湖南保供电</li>
-                        </ul>
-                    </a>
-                </li>
                 <!-- PC端 -->
-                <li class="content-item item-2">
-                    <a href="tob.html" >
-                        <div class="content-img">
-                            <img src="./img/index/2PC.png" alt="">
-                        </div>
-                        <div class="design-title">
-                            <div class="title">
-                                <img src="./img/index/数字2.png" alt="" class="number">
-                                <h2>PC端</h2>
-                            </div>
-                            <div class="item-arrow">
-                                <div class="arrow-gif">
-                                    <i class="iconfont" >&#xe7fa;</i>
-
+                <li class="content-item item-web arrow-hover item-animation">
+                    <a href="">
+                         <div class="img-container " id="group1">
+                            <!-- 背景图片 -->
+                            <img src="./img/index/web/bg-1.png" class="parallax-bg least-slow image" alt="背景1">
+                            <!-- 前景图片容器 -->
+                            <div class="foreground-card">
+                                 <img src="./img/index/web/curtain.png" class="slow image " alt="前景1">
+                                 <img src="./img/index/web/right-bottom.png" class="middle-slow image" alt="前景1">
+                                 <img src="./img/index/web/glass.png" class="middle-fast image" alt="前景1">
+                                 <img src="./img/index/web/right-top.png" class="middle-slower image" alt="前景1" >
+                                 <img src="./img/index/web/table.png" class="fast image " alt="前景1">
+                                 <img src="./img/index/web/laptop.png" class="least-fast image " alt="前景1">
+                                <img src="./img/index/web/black.png" class="black image" alt="前景1">
+                                <!-- 标题 -->
+                                <div class="design-title">
+                                    <div class="title">
+                                        <div class="content-item-title">
+                                            <svg class="icon hidden-arrow" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>           
+                                            <h2>web</h2>
+                                        </div>
+                                    </div>
+                                    <span>泛在物联绘制系统 X 泛在物联绘制系统</span>
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
-
-                        <ul class="content-labels">
-                            <li class="content-label">泛在物联图形绘制系统</li>
-                            <li class="content-label">问答社区</li>
-                        </ul>
+                        <div class="item-arrow">
+                            <div class="arrow-gif">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-arrow"></use>
+                                </svg>           
+                            </div>
+                        </div>                          
                     </a>
                 </li>
                 <!-- 可视化 -->
-                <li class="content-item item-3">
-                    <a href="app.html">
-                        <div class="content-img">
-                            <img src="./img/index/3可视化.png" alt="">
-                        </div>
-                        <div class="design-title">
-                            <div class="title">
-                                <img src="./img/index/数字3.png" alt="" class="number">
-                                <h2>APP</h2>
-                            </div>
-                            <div class="item-arrow">
-                                <div class="arrow-gif">
-                                    <i class="iconfont" >&#xe7fa;</i>
+                <li class="content-item arrow-hover item-animation">
+                    <a href="./visualization.html">
+                         <div class="img-container " id="group1">
+                            <!-- 背景图片 -->
+                            <img src="./img/index/visualization/bg.png" class="parallax-bg least-slow image" alt="背景1">
+                            <!-- 前景图片容器 -->
+                            <div class="foreground-card" id="three-d-foreground">
+                                <img src="./img/index/visualization/center-bg1.png" class="laptop-bg image" alt="前景1">
+                                <img src="./img/index/visualization/center.png" class="least-fast image" alt="前景1">
+                                <img src="./img/index/web/black.png" class="black image" alt="前景1">
+                                <div class="design-title">
+                                    <div class="title">
+                                        <div class="content-item-title">
+                                            <svg class="icon hidden-arrow" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>           
+                                            <h2>Visualization</h2>
+                                        </div>
+                                    </div>
+                                    <span>泛在物联绘制系统 X 泛在物联绘制系统</span>
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
-                        <ul class="content-labels">
-                            <li class="content-label">车船定位</li>
-                            <li class="content-label">车船定位</li>
-                        </ul>
+                        <div class="item-arrow">
+                            <div class="arrow-gif">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-arrow"></use>
+                                </svg>           
+                            </div>
+                        </div>                          
+                    </a>
+                </li>
+                <!-- app -->
+                <li class="content-item arrow-hover item-animation">
+                    <a href="">
+                        <div class="img-container " id="group1">
+                            <!-- 背景图片不动 -->
+                            <img src="./img/index/app/bg.png" class="parallax-bg least-slow image" alt="背景1">
+                                <!-- 前景图片容器 -->
+                            <div class="foreground-card" >
+                                <img src="./img/index/app/far-right.png" class="middle-slow opacity image" alt="前景5">
+                                <img src="./img/index/app/rock-left-bg.png" class="slow image" alt="前景5">
+                                <img src="./img/index/app/rock-left.png" class="least-fast image" alt="前景5">
+                                <img src="./img/index/app/rock-right-blur.png" class="slow image" alt="前景4">
+                                <img src="./img/index/app/Rock-right.png" class="fast image" alt="前景4">
+                                <img src="./img/index/App/phone.png" class="main image" alt="前景3">
+                                <img src="./img/index/web/black.png" class="black image" alt="前景1">
+                                <div class="design-title">
+                                    <div class="title">
+                                        <div class="content-item-title">
+                                      <svg class="icon hidden-arrow" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>           
+                                            <h2>APP</h2>
+                                        </div>
+                                    </div>
+                                    <span>泛在物联绘制系统 X 泛在物联绘制系统</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="item-arrow">
+                            <div class="arrow-gif">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-arrow"></use>
+                                </svg>           
+                            </div>
+                        </div>                          
                     </a>
                 </li>
             </ul>
+            <div class="content-others">
+                <div class="content-other content-other1 arrow-hover item-animation">
+                    <a href="./3d.html">
+                        <div class="link-3d">
+                            <div class="img-container " id="group1">
+                                <!-- 背景图片不动 -->
+                                <img src="./img/index/3d.png" class="parallax-bg opacity black image" alt="背景1">
+                                    <!-- 前景图片容器 -->
+                                <div class="foreground-card" >
+                                    <video class="fast  image reversible-video" src="./video/3d.mp4" autoplay muted loop alt="背景1" id="video-slow" ></video>
+                                    <!-- <img src="./img/index/3d.png" class="fast  image" alt="前景5"> -->
+                                    <h3 class="others-text">3D</h3>
+                                    <div class="item-arrow">
+                                        <div class="arrow-gif">
+                                            <svg class="icon" aria-hidden="true">
+                                                <use xlink:href="#icon-arrow"></use>
+                                            </svg>           
+                                        </div>
+                                    </div>                          
+                                 </div>
+                                
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="content-other content-other2 item-animation">
+                    <p>I have successfully completed a total of 40+ projects</p>
+                    
+                    <h5>☺ (2018-present)</h5>
+                    <div class="other2-deco">projects</div>
+                </div>
+                <div class="content-other content-other3 item-animation">
+                    <!-- <h6>skills & tools</h6> -->
+                    <div class="content-label-container" id="container">
+                        <div class="label">ui/ux</div>
+                        <div class="label">creativity</div>
+                        <div class="label">figma</div>
+                        <div class="label">imagination</div>
+                        <div class="label">ps</div>
+                        <div class="label">blender</div>
+                        <div class="label">ae</div>
+                        <div class="label">Illustration</div>
+                        <div class="label">Sketch</div>
+                        <div class="label">C4D</div>
+                    </div>
+                </div>
+
+            </div>
       
         </div>
-    </div>
-    <!---------------------------4.3d设计 ----------------------------->
 
-    <div class="design-3d">
-        <div class="all">
-            <img src="./img/index/metal.png" alt="" class="metal">
-            <h1 class="all-title left">3D designs</h1>
-            <p class="Subtitle left">三维设计</p> 
-            <div class="carousel-container">
-                <div class="nav-buttons">
-                    <div>
-                        <button
-                        id="prevBtn"
-                        onclick="scroller.scrollBy(-380, 0)"
-                        class="scroller-controls-btn prev-btn carousel-button"
-                        aria-label="Previous Item"
-                        title="Previous Item"
-                      >
-                        <svg
-                          aria-hidden="true"
-                          width="61"
-                          height="40"
-                          viewBox="0 0 61 40"
-                          fill="currentColor"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M20 38C10.0589 38 2 29.9411 2 20C2 10.0589 10.0589 2 20 2C29.9411 2 38 10.0589 38 20C38 29.9411 29.9411 38 20 38ZM20 40C8.9543 40 0 31.0457 0 20C0 8.9543 8.9543 0 20 0C31.0457 0 40 8.9543 40 20C40 31.0457 31.0457 40 20 40Z"
-                          />
-                          <path
-                            class="arrow"
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M21.25 25.3923L16 20.1962L21.25 15V19.1962H61V21.1962H21.25V25.3923Z"
-                          />
-                        </svg>
-                        </button>
-                        <button
-                            id="nextBtn"
-                            onclick="scroller.scrollBy(380, 0)"
-                            class="scroller-controls-btn next-btn carousel-button"
-                            aria-label="Next Item"
-                            title="Next Item"
-                        >
-                            <svg
-                            aria-hidden="true"
-                            width="62"
-                            height="40"
-                            viewBox="0 0 62 40"
-                            fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg"
-                            >
-                            <path
-                                class="circle"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M41.5001 38C51.4412 38 59.5001 29.9411 59.5001 20C59.5001 10.0589 51.4412 2 41.5001 2C31.559 2 23.5001 10.0589 23.5001 20C23.5001 29.9411 31.559 38 41.5001 38ZM41.5001 40C52.5458 40 61.5001 31.0457 61.5001 20C61.5001 8.9543 52.5458 0 41.5001 0C30.4544 0 21.5001 8.9543 21.5001 20C21.5001 31.0457 30.4544 40 41.5001 40Z"
-                            />
-                            <path
-                                class="arrow"
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M40.2501 25.3923L45.5001 20.1962L40.2501 15V19.1962H0.500122V21.1962H40.2501V25.3923Z"
-                            />
-                            </svg>
-                        </button>
-                    </div>
-               
-                </div>
+
+
     
-                <div class="carousel play" >
-                    <a href="./3d.html" target="_blank">
-                        <div alt="Image 1" class="active img1" id="carousel-image">
-                            <div class="hide">
-                                <iframe src="./img/index/circle-arrow.svg" frameborder="0"></iframe>
-                                <p>查看更多</p>
-                            </div>
-                            <img src="./img/index/img-roll/1.png" >
+    </div>
+    <!---------------------------4.其他设计 ----------------------------->
+    <div class="other-designs">
+        <div class="other-container">
+            <div class="other-text">
+                <hr />
+
+                <section>
+                    
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="texts">
+                        <h1 class="split-animate">explore.</h1>
+                        <div class="texts-box">
+                            <h1 class="split-animate strong-hidden smooth-animation">other</h1>
+                            <h1 class="strong">other</h1>
+                            <h1 class="split-animate">designs</h1>
                         </div>
-                    </a>
-
-                    <a href="./3d.html" target="_blank">
-                        <div alt="Image 2" class="next img2" id="carousel-image">
-                            <div class="hide">
-                                <iframe src="./img/index/circle-arrow.svg" frameborder="0"></iframe>
-                                <p>查看更多</p>
-                            </div>
-                            <img src="./img/index/img-roll/2.png" >
-                        </div>
-                    </a>
-
-                    <a href="./3d.html" target="_blank">
-                        <div alt="Image 3" class="hidden" id="carousel-image">
-                            <div class="hide">
-                                <iframe src="./img/index/circle-arrow.svg" frameborder="0"></iframe>
-                                <p>查看更多</p>
-                            </div>
-                            <img src="./img/index/img-roll/3.png" >
-                        </div>
-                    </a>
-
-
-                    <!-- <a href="./3d.html">
-                        <div alt="Image 2" class="next img2">
-                            <p>查看更多</p>
-                            <img src="./img/index/img-roll/2.png" >
-                        </div>
-                    </a> -->
-
-                    <!-- 如果有更多图片，继续添加，并设置适当的class -->
-                    <!-- <img src="./img/index/img-roll/3.png" alt="Image 3" class="hidden">
-                    <img src="./img/index/img-roll/4.png" alt="Image 4" class="hidden">
-                    <img src="./img/index/img-roll/5.png" alt="Image 5" class="hidden"> -->
-                </div>
+                    </div>
+                    
+                </section>
+            
+            <hr />
             </div>
-        
         </div>
 
-            <p class="Stroke">3D design ✦ 3D design ✦ 3D design ✦ 3D design ✦ 3D design</p>
-            <video class="myVideo" src="./video/旋转3d.mp4" autoplay muted loop class="video1"></video>
-            <div class="video-bg"></div>
 
-        </div> 
-
-
-            
-        <!-- 两个视频
-        <div class="video-wrapper" id="videoWrapper1">
-            <video id="video1" class="myVideo" autoplay muted  src="./video/1月7日 (1).mp4"></video>
-        </div> -->
-
-    </div>
-    <!------------------------- 5.其他设计 --------------------------->
-    <div class="other-designs">
-        <img src="./img/index/3d钢笔.png" alt="" class="pen">
-        <h1 class="all-title">Other designs</h1>
-        <p class="Subtitle">设计沉淀录</p>  
-        <div class="img-roll wrapper">
+        <div class="img-roll smooth-animation">
             <!-- 向左滚动 -->
             <div class="text-scroll">
                 <span>aigc</span>
@@ -393,55 +424,226 @@
                 <span >✦</span>
                 <span>Graphic Design</span>
                 <span>☻</span>
+                <span>Dynamic design</span>
+
             </div>
-            <!-- 向右滚动 -->
-            <ul class="scroll-right scroll-list">
-                <li class="right-list"><img src="./img/index/img-roll/1.png" alt=""></li>
-                <li class="right-list"><img src="./img/index/img-roll/2.png" alt=""></li>
-                <li class="right-list"><img src="./img/index/img-roll/3.png" alt=""></li>
-                <li class="right-list"><img src="./img/index/img-roll/4.png" alt=""></li>
-                <li class="right-list"><img src="./img/index/img-roll/5.png" alt=""></li>
-                <li class="right-list"><img src="./img/index/img-roll/6.png" alt=""></li>
+             <div class="scoll-container">
+                <!-- 向右滚动 -->
+                <ul class="scroll-right" id="rightTrack">
+                    <li class="right-list scroll-item"><img src="./img/index/img-roll/1.png" alt=""></li>
+                    <li class="right-list scroll-item"><img src="./img/index/img-roll/2.png" alt=""></li>
+                    <li class="right-list scroll-item"><img src="./img/index/img-roll/3.png" alt=""></li>
+                    <li class="right-list scroll-item"><img src="./img/index/img-roll/4.png" alt=""></li>
 
-            </ul>
-            <!-- 向左滚动 -->
-            <ul class="scroll-left ">
-                <li class="left-list"><img src="./img/index/img-roll/7.png" alt=""></li>
-                <li class="left-list"><img src="./img/index/img-roll/8.gif" alt=""></li>
-                <li class="left-list"><img src="./img/index/img-roll/9.gif" alt=""></li>
-                <li class="left-list"><img src="./img/index/img-roll/10.png" alt=""></li>
-                <li class="left-list"><img src="./img/index/img-roll/11.png" alt=""></li>
-                <li class="left-list"><img src="./img/index/img-roll/12.png" alt=""></li>
-            </ul>
+                </ul>
+                <!-- 向左滚动 -->
+                <ul class="scroll-left " id="leftTrack">
+                    <li class="left-list scroll-item"><img src="./img/index/img-roll/7.png" alt=""></li>
+                    <li class="left-list scroll-item"><img src="./img/index/img-roll/8.gif" alt=""></li>
+                    <li class="left-list scroll-item"><img src="./img/index/img-roll/9.gif" alt=""></li>
+                    <li class="left-list scroll-item"><img src="./img/index/img-roll/10.png" alt=""></li>
+                </ul>
+             </div>
 
-            <div class="tag-canvas">
-                
-                <div class="tag"><span class="iconfont">&#xe69d;</span></div>
-                <div class="tag"><i class="iconfont">&#xe602;</i></div>
-                <div class="tag"><i class="iconfont">&#xe681;</i></div>
-                <div class="tag"><i class="iconfont">&#xe63f;</i></div>
-                <div class="tag"><i class="iconfont">&#xe6ef;</i></div>
-                <div class="tag"><i class="iconfont">&#xe7fc;</i></div>
-                <div class="tag"><i class="iconfont">&#xe7fd;</i></div>
-                <div class="tag"><i class="iconfont">&#xe65f;</i></div>
+        </div>
+
+    </div>
+    <!---------------------------5.灵感切片----------------------------->
+
+   <div class="inspiration basic-padding">
+        <div class="wrapper">
+            <h1 class="section-title">Inspiration Slice</h1>
+            <div class="subtitle-box">
+                <span class="highlight">⊹</span>
+                <span class="section-Subtitle">学习碎片 × 生活光影</span>
+            </div>
+            <div class="threed-main">
+                <div class="gravity-box">
+                    <!-- <h6 class="splitline">Lusion is a digital production studio that brings your ideas to life through visually captivating designs and interactive experiences. </h6> -->
+                    <div class="tag-canvas-container">
+                        <div class="tag-canvas" id="physics-container">
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-color"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-hulianwang"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-AItexiao"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-texiao"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-dengpao"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-a-jihe1"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-color-filter-line"></use>
+                                </svg>           
+                            </div>
+                            <div class="tag">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-line-paintyouqitong"></use>
+                                </svg>           
+                            </div>
 
 
 
+                        </div>
+                    </div>
+                </div>
+                <div class="inspiration-containers">
+                    <div class="note-container">
+                        <div class="inspiration-container-header">
+                            <h1>学习笔记</h1>
+                            <p>
+                                <span class="highlight">{ </span>
+                                 notes   
+                                <span class="highlight">}</span>
+                            </p>
+                        </div>
+                        <div class="inspiration-container-content">
+                            <div class="books-wrapper">
+                                <!-- Book 1 -->
+                                <div class="books__item">
+                                    <a href="https://www.yuque.com/u132157/kb/avwghzt5yvfrlzf4?singleDoc# 《代码》" target="_blank">
+                                        <div class="books__container">
+                                        <div class="books__cover">
+                                            <div class="books__back-cover"></div>
+                                            <div class="books__inside">
+                                                <div class="books__page"></div>
+                                                <div class="books__page"></div>
+                                            </div>
+                                            <div class="books__image">
+                                            <img src="./img/index/html-book.png" alt="Psychedelics and Mental Health by Irene de Caso">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- Book 2 -->
+                                <div class="books__item">
+                                    <a href="https://www.yuque.com/u132157/kb/yfltkyu75r7a38ii?singleDoc# 《AI关键词》" target="_blank">
+                                        <div class="books__container">
+                                        <div class="books__cover">
+                                            <div class="books__back-cover"></div>
+                                            <div class="books__inside">
+                                                <div class="books__page"></div>
+                                                <div class="books__page"></div>
+                                            </div>
+                                            <div class="books__image">
+                                            <img src="./img/index/aicg-book.png" alt="Psychedelics and Mental Health by Irene de Caso">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- Book 3 -->
+                                <div class="books__item">
+                                    <a href="https://www.yuque.com/u132157/kb/avwghzt5yvfrlzf4?singleDoc# 《代码》" target="_blank">
+                                        <div class="books__container">
+                                        <div class="books__cover">
+                                            <div class="books__back-cover"></div>
+                                            <div class="books__inside">
+                                                <div class="books__page"></div>
+                                                <div class="books__page"></div>
+                                            </div>
+                                            <div class="books__image">
+                                            <img src="./img/index/ae-book.png" alt="Psychedelics and Mental Health by Irene de Caso">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- Book 4 -->
+                                <div class="books__item">
+                                    <a href="https://www.yuque.com/u132157/kb/avwghzt5yvfrlzf4?singleDoc# 《代码》" target="_blank">
+                                        <div class="books__container">
+                                        <div class="books__cover">
+                                            <div class="books__back-cover"></div>
+                                            <div class="books__inside">
+                                                <div class="books__page"></div>
+                                                <div class="books__page"></div>
+                                            </div>
+                                            <div class="books__image">
+                                            <img src="./img/index/c4d-book.png" alt="Psychedelics and Mental Health by Irene de Caso">
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <img src="./img/index/bookshelf.png" alt="" class="bookshelf">
+                        </div>
+                    </div>
 
-              </div>
+                </div>           
+            </div>
+        </div>
+        <p class="Stroke smooth-animation">3D design ✦ 3D design ✦ 3D design ✦ 3D design ✦ 3D design</p>
+    </div>
+
+     <!------------------------- 6.联系我 --------------------------->
+    <div class="contact" id="contactContainer">
+        <div class="imgTail"><img src="./img/index/tail/metal.png" alt=""></div>
+        <div class="imgTail"><img src="./img/index/tail/7.png" alt=""></div>
+        <div class="imgTail"><img src="./img/index/tail/3d靶子.png" alt=""></div>
+        <div class="imgTail"><img src="./img/index/tail/6.png" alt=""></div>
+        <div class="imgTail"><img src="./img/index/tail/5.png" alt=""></div>
+
+
+        <div class="wrapper">
+            <h1>contact me</h1>
+            <p>thanks for watching.</p>
+            <div class="contact-information">
+                <div class="line">
+                    <h2>578742871@qq.com</h2>
+                </div>
+                <ul id="navLinks" >
+                    <li class="btn-wechat">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-weixin "></use>
+                        </svg>
+                        <img src="./img/index/二维码.png" alt="" class="QRcode">
+                    </li>
+                    <li>
+                        <a href="https://www.zcool.com.cn/u/14729612">
+                            <svg class="icon" aria-hidden="true">
+                                
+                                <use xlink:href="#icon-zhanku "></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
 
         </div>
     </div>
 
 
-
-
-
-  <!-- 引入JS文件 --> 
-  <script src="./js/index.js"></script>
-  <script src="./js/media.js"></script>
+    
+    <!-- 引入JS文件 --> 
+    <script src="./js/slide.js"></script>
+    <script src="./js/index.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js'></script><script  src="./script.js"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
 </body>
 </html>

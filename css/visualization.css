@@ -1,6 +1,36 @@
 body {
-    background-color:#051927;
+    background-color:var(--bg-color-dark);
 }
+#cursor-dot {
+    width: 10px;
+    height: 10px;
+    background: #00eeffa9;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s linear;
+    pointer-events: none;
+    z-index:1000;
+    filter: drop-shadow(0px 0px 4px #47B5FF) drop-shadow(0px 0px 2px #3FF2FF);
+  }
+  
+  #cursor-circle {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    position: absolute;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s linear, border 0.3s linear, width 0.2s linear, height 0.2s linear, opacity 0.7s 0.3s linear;
+    pointer-events: none;
+    z-index:999;
+  }
 /* --------------------------------------头部------------------------------------------ */
 .header{
     width: 100%;
@@ -88,6 +118,22 @@ body {
     height: auto;
 }
 
+/* video默认右边 */
+video {
+    width: 62vw;
+    top: 62%;
+    right: 8%;
+}
+.video-left {   
+    top: 14%;
+    left: 8%;
+}
+.video-middle {   
+    top: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* ---------------------------------------- */
 
 
@@ -96,7 +142,7 @@ body {
     width: 58vw;
     height: auto;
     top: 8%;
-    right: 7.5%;
+    right: 8%;
     z-index: 1;
     border-radius: 8px;
     border: 2px solid transparent;
@@ -110,6 +156,7 @@ body {
     position: absolute;
     width: 100%;
     bottom:0;
+    left: 0;
     mix-blend-mode: plus-lighter;
 }
 
@@ -118,12 +165,12 @@ body {
     position: absolute;
     z-index: 2;
     top: 34vw;
-    left: 7.5%;
+    left: 8%;
 }
 /* ---------------------------------------2----------------------------------- */
 .pic2-bg {
     position: relative;
-    background-image: url(../img/visualization/bg1-word.png),url(../img/visualization/bg1.png);
+    background-image:url(../img/visualization/bg1.png);
     background-size: 100% auto;
     background-repeat:no-repeat;
     width: 100%;
@@ -201,28 +248,15 @@ body {
     height: 112vw;
     background-image: url(../img/visualization/文字3.png),url(../img/visualization/bg3.png);
 }
-.video2 {
-    width: 62vw;
-    top: 14%;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.video3 {
-    width: 62vw;
-    top: 62%;
-    right: 7.5%;
-}
+
+
 /* ---------4-------- */
 .pic4 {
     height: 56vw;
     background-image: url(../img/visualization/bg4.png);
 }
-.video4 {
-    width: 62vw;
-    top: 18%;
-    left: 7.5%;
-}
+
 /* ---------机器人/东宝-------- */
 .robot {
     height: 52vw;
@@ -267,6 +301,7 @@ body {
 }
 .fixed-buttons li {
     margin: 0 50px 0 50px;
+    
 }
 .fixed-buttons a {
     font-size:var(--normal-font-size);
@@ -274,7 +309,8 @@ body {
     text-shadow: 0px 2px 8px rgba(0, 178, 255, 0.65);
     text-decoration: none;
     position: relative;
-    margin-left: 5.7rem;  
+    margin-left: 5.7rem; 
+    white-space: nowrap; 
 }
 .fixed-buttons a::after{
     content: '';
@@ -313,44 +349,54 @@ body {
 /* ------------------------------- 以上为默认样式 ----------------------------------- */
 /* ------------------------------小于等于768px------------------------------- */
 @media only screen and (max-width: 768px) {
-
     /* 头部导航样式 */
 
     .header {
         background: #fff;
-        height: 48px;
+        height: 58px;
         box-shadow: 0px 1px 0px 0px #EDEFF2;
     }
     .wrapper {
         width: 90%;
     }
     .mylogo {
-        width: 56px;
-        height: 16px;
+  
         background-image: url(../logo/logo.svg);
     }
 
     .burger {
-        display: block;
-        width: 17px;
-        height: 17px;
-        background-image: url(../img/index/更多.svg);
+        display: flex;
+        width: 20px;
+        height: 15px;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .burger.close {
-        background-image: url(../img/index/关闭.svg);
+        .line-top {
+          transform: rotate(45deg);
+          transform-origin: left top;        
+        }
+
+        .line-middle {
+          width: 0;
+          transition: all 0.3 ease-in;
+        }
+        .line-bottom {
+          transform: rotate(-45deg);
+          transform-origin: left bottom;
+        }
     }
     .header.open .nav {
         position: absolute;
         left: 0;
         top: 49px;
         width: 100vw;
-        height: 100vh;
         background-color: #fff;
         color: var(--first-color);
         display: block;
         padding: 0 5%;
-        opacity: 0;
         animation: slideDown 0.6s ease-out forwards;
+        border-radius: 0 0 30px 30px ;
     }
     @keyframes slideDown {
         from {
@@ -361,18 +407,40 @@ body {
             height: 100vh;
             opacity: 1;
         }
+    }
+
+   .header.close .nav {
+           position: absolute;
+        left: 0;
+        top: 49px;
+        width: 100vw;
+        background-color: #fff;
+        color: var(--first-color);
+        display: block;
+        padding: 0 5%;
+        animation: slideUp 0.6s ease-out forwards;
+    }
+    @keyframes slideUp {
+        from {
+            height: 100vh;
+            opacity: 1;
         }
+        to {
+            height: 0;
+            opacity: 0;
+        }
+    }
 
     .nav {
         display: none;
     }
 
     .nav li {
-        margin-top: 40px;
-        
+        margin-top: 50px;
+        text-align: center;
     }
     .nav a {
-        font-size: 1.2rem;
+        font-size: 24px;
         margin-left: 0;
         color: var(--text-color-1);
     }
