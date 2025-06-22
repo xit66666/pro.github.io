@@ -172,8 +172,8 @@ video {
 .pic2-bg {
     position: relative;
     background-image:
-    url(https://framerusercontent.com/images/Zdzy6sQBCgi4bS1jKLZ9RNAb4V4.png?scale-down-to=4096),
-    url(https://framerusercontent.com/images/EihU1nrO2aDTddEjp2OD6umSk.png?scale-down-to=2048);
+    url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/bg1-text.png),
+    url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/bg1.png);
     background-size: 100% auto;
     background-repeat:no-repeat;
     width: 100%;
@@ -250,8 +250,8 @@ video {
 .pic3 {
     height: 112vw;
     background-image: 
-    url(https://framerusercontent.com/images/mVyfyxQZDBc6t6CF7JiCKCjS4.png?scale-down-to=4096),
-    url(https://framerusercontent.com/images/XHAJdxOKA98bw3Ag6gYHnGal38U.png?scale-down-to=2048);
+    url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/%E6%96%87%E5%AD%973.png),
+    url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/bg3.png);
 }
 
 
@@ -259,14 +259,14 @@ video {
 /* ---------4-------- */
 .pic4 {
     height: 56vw;
-    background-image: url(https://framerusercontent.com/images/wrZX9rWZA3nNfE3P2hU8S6paSH4.png?scale-down-to=2048);
+    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/bg4.png);
 }
 
 /* ---------机器人/东宝-------- */
 .robot {
     height: 52vw;
     overflow: hidden;
-    background-image: url(https://framerusercontent.com/images/a0Wm89cmKcHTR3nKb9vZoM6uL3g.png?scale-down-to=2048);
+    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/8.png);
 }
 .robot .wrapper {
     display: flex;
@@ -276,7 +276,7 @@ video {
 .pad-bg {
     width: 65vw;
     height: 37vw;
-    background-image: url(https://framerusercontent.com/images/TiGgm4Vyux3LJU37e3Xz6qFLI.png?scale-down-to=1024);
+    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/visualization/pad-bg.png);
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -352,6 +352,7 @@ video {
 
 
 /* ------------------------------- 以上为默认样式 ----------------------------------- */
+
 /* ------------------------------小于等于768px------------------------------- */
 @media only screen and (max-width: 768px) {
     /* 头部导航样式 */
@@ -455,5 +456,15 @@ video {
         border: 1px solid transparent;
         border-radius: 4px;
     }
+
+}
+
+
+
+
+@media only screen and (max-width: 1200px) {
+ .btn-back {
+    display: none;
+ }
 
 }
