@@ -303,292 +303,223 @@ document.querySelectorAll('h1, span, p, h2, .skill-list').forEach(element => {
 
 
 
-// 增强版RGB色散着色器（支持圆角和鼠标效果）
-// RGB色散着色器
-const fragmentShader = `
-  uniform sampler2D uTexture;
-  uniform vec2 uMouseUV;
-  uniform float uHoverEffect;
-  uniform float uIsHovered;
-  uniform float uMouseEffect;
-  uniform vec2 uSize;
-  varying vec2 vUv;
-
-  float roundedBox(vec2 p, vec2 b, float r) {
-    vec2 q = abs(p) - b + r;
-    return min(max(q.x, q.y), 0.0) + length(max(q, 0.0)) - r;
-  }
-
-  vec3 enhancedRGBSplit(sampler2D tex, vec2 uv, vec2 mouseOffset, float intensity) {
-    float rOffset = 0.1 * intensity;
-    float gOffset = 0.2 * intensity;
-    float bOffset = 0.3 * intensity;
-    
-    float r = texture2D(tex, uv + mouseOffset * rOffset).r;
-    float g = texture2D(tex, uv + mouseOffset * gOffset).g;
-    float b = texture2D(tex, uv + mouseOffset * bOffset).b;
-    
-    vec3 original = texture2D(tex, uv).rgb;
-    vec3 splitColor = vec3(r, g, b);
-    return mix(original, splitColor, 0.8 * intensity);
-  }
-
-  void main() {
-    float borderRadius = 16.0 / max(uSize.x, uSize.y);
-    vec2 center = vec2(0.5, 0.5);
-    vec2 position = abs(vUv - center);
-    float distance = roundedBox(position - center + vec2(0.5), vec2(0.5), borderRadius);
-    
-    if (distance > 0.0) {
-      discard;
-    }
-    
-    if (uIsHovered > 0.5) {
-      vec2 mouseOffset = (vUv - uMouseUV) * uHoverEffect;
-      float dist = length(mouseOffset);
-      float effect = smoothstep(0.3, 0.0, dist) * uMouseEffect;//扭曲参数
-      
-      vec3 color = enhancedRGBSplit(uTexture, vUv, mouseOffset, effect);
-      gl_FragColor = vec4(color, 1.0);
-    } else {
-      gl_FragColor = texture2D(uTexture, vUv);
-    }
-  }
-`;
-
-const vertexShader = `
-  uniform vec2 uMouseUV;
-  uniform float uHoverEffect;
-  uniform float uIsHovered;
-  uniform float uMouseEffect;
-  varying vec2 vUv;
-
-  void main() {
-    vUv = uv;
-    
-    if (uIsHovered > 0.5) {
-      vec2 mouseOffset = (uv - uMouseUV) * uHoverEffect;
-      float dist = length(mouseOffset);
-      float effect = smoothstep(0.5, 0.0, dist) * uMouseEffect;//范围
-      
-      vec3 newPosition = position;
-      vec2 normalizedOffset = normalize(mouseOffset) * dist;
-      newPosition.xy += normalizedOffset * sin(dist * 20.0) * 0.1 * effect;
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-    } else {
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-    }
-  }
-`;
-
+//------------图片扭曲-----------------
 class DistortionEffect {
-  constructor() {
-    this.images = [...document.querySelectorAll('.distort-container img')];
-    this.meshItems = [];
-    this.mouse = new THREE.Vector2();
-    this.hoverEffect = 0;
-
-    this.setupThreeJS();
-    this.createMeshItems();
-    this.setupEventListeners();
-    this.startRendering();
-  }
-
-  setupThreeJS() {
-    // 创建场景
-    this.scene = new THREE.Scene();
+    constructor() {
+      // ============== 可调节参数区域 ==============
+      // 扭曲效果参数
+      this.distortionRadius = 280;     // 扭曲半径(像素)
+      this.distortionStrength = 0.3;   // 扭曲强度(0-1)
+      this.smoothness = 0.1;           // 平滑过渡参数(0-1)，值越大过渡越平滑
+      
+      // 噪点效果参数
+      this.noiseIntensity = 0.01;       // 噪点强度(0-1)，值越大噪点越明显
+      this.noiseScale = 1;             // 噪点大小(1-20)，值越大噪点颗粒越大
+      this.noiseDensity = 0.8;         // 噪点密度(0-1)，值越大噪点越密集
+      this.noiseAnimationSpeed = 0.001; // 噪点动画速度(0-0.1)，值越大变化越快
+      
+      // 噪点颜色参数 (0-255)
+      this.noiseRed = 255;             // 红色通道强度
+      this.noiseGreen = 255;           // 绿色通道强度
+      this.noiseBlue = 255;            // 蓝色通道强度
+      this.noiseAlpha = 0.1;           // 噪点透明度(0-1)
+      
+      // 动画参数
+      this.animationSpeed = 0.003;     // 波浪动画速度(0-1)
+      // ==========================================
+      
+      this.canvases = [...document.querySelectorAll('.distort-canvas')];
+      this.activeCanvas = null;
+      this.mouse = { x: 0, y: 0 };
+      this.animationFrame = null;
+      this.noiseOffset = 0; // 用于噪点动画的偏移量
+      
+      this.init();
+    }
     
-    // 设置相机
-    const perspective = 1000;
-    const fov = (180 * (2 * Math.atan(window.innerHeight / 2 / perspective))) / Math.PI;
-    this.camera = new THREE.PerspectiveCamera(fov, window.innerWidth / window.innerHeight, 1, 1000);
-    this.camera.position.set(0, 0, perspective);
-    
-    // 创建渲染器
-// 修改渲染器设置
-  this.renderer = new THREE.WebGLRenderer({ 
-    antialias: false, // 禁用抗锯齿
-    alpha: true,
-    powerPreference: "high-performance",
-    stencil: false,
-    depth: false
-  });
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    this.renderer.domElement.style.pointerEvents = 'none';
-    document.body.appendChild(this.renderer.domElement);
-
-    // 窗口大小调整
-    window.addEventListener('resize', () => {
-      this.camera.aspect = window.innerWidth / window.innerHeight;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  }
-
-  createMeshItems() {
-    
-    this.images.forEach(img => {
-      const container = img.parentElement;
-      const { width, height, left, top } = container.getBoundingClientRect();
-      
-      // 创建几何体
-      const geometry = new THREE.PlaneBufferGeometry(1, 1, 50, 50);// 从100减少到20
-      
-      // 加载纹理
-      const texture = new THREE.TextureLoader().load(img.src);
-      
-      // 设置uniforms
-      const uniforms = {
-        uTexture: { value: texture },
-        uMouseUV: { value: new THREE.Vector2(0.5, 0.5) },
-        uHoverEffect: { value: 0 },
-        uIsHovered: { value: 0 },
-        uMouseEffect: { value: 0 },
-        uSize: { value: new THREE.Vector2(width, height) }
-      };
-
-      // 创建材质
-      const material = new THREE.ShaderMaterial({
-        uniforms,
-        vertexShader,
-        fragmentShader,
-        transparent: true,
-        side: THREE.DoubleSide
-      });
-
-      // 创建网格
-      const mesh = new THREE.Mesh(geometry, material);
-      
-      // 设置位置和尺寸
-      mesh.position.set(
-        left - window.innerWidth / 2 + width / 2,
-        -top + window.innerHeight / 2 - height / 2,
-        0
-      );
-      mesh.scale.set(width, height, 1);
-      
-      // 添加到场景
-      this.scene.add(mesh);
-      
-      // 保存引用
-      this.meshItems.push({
-        mesh,
-        uniforms,
-        element: img,
-        update: () => {
-          const { width, height, left, top } = container.getBoundingClientRect();
-          mesh.position.set(
-            left - window.innerWidth / 2 + width / 2,
-            -top + window.innerHeight / 2 - height / 2,
-            0
-          );
-          mesh.scale.set(width, height, 1);
-          uniforms.uSize.value.set(width, height);
-        }
-      });
-    });
-  }
-
-  setupEventListeners() {
-    // 鼠标移动事件
-    document.addEventListener('mousemove', (e) => {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
-      this.hoverEffect = 1.0;
-      
-      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-      const mouse = new THREE.Vector2(mouseX, mouseY);
-      
-      const raycaster = new THREE.Raycaster();
-      raycaster.setFromCamera(mouse, this.camera);
-      
-      // 重置所有hover状态
-      this.meshItems.forEach(item => {
-        item.uniforms.uIsHovered.value = 0;
-      });
-      
-      // 检测碰撞
-      const intersects = raycaster.intersectObjects(this.meshItems.map(item => item.mesh));
-      if (intersects.length > 0) {
-        const intersect = intersects[0];
-        const hoveredMesh = intersect.object;
-        const uv = intersect.uv;
+    init() {
+      // 初始化所有canvas
+      this.canvases.forEach((canvas, index) => {
+        canvas.id = `canvas-${index}`;
+        const container = canvas.parentElement;
+        const imgSrc = canvas.dataset.src;
         
-        // 设置hover状态
-        this.meshItems.forEach(item => {
-          if (item.mesh === hoveredMesh) {
-            item.uniforms.uIsHovered.value = 1;
-            item.uniforms.uMouseUV.value = uv;
+        // 设置canvas尺寸
+        const resizeCanvas = () => {
+          const { width, height } = container.getBoundingClientRect();
+          canvas.width = width;
+          canvas.height = height;
+        };
+        
+        // 加载图像
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = imgSrc;
+        
+        img.onload = () => {
+          resizeCanvas();
+          this.drawOriginalImage(canvas, img);
+          
+          // 保存原始图像数据
+          canvas.originalImage = img;
+          canvas.ctx = canvas.getContext('2d');
+          canvas.originalImageData = canvas.ctx.getImageData(0, 0, canvas.width, canvas.height);
+        };
+        
+        // 窗口大小变化时重绘
+        window.addEventListener('resize', () => {
+          resizeCanvas();
+          if (canvas.originalImage) {
+            this.drawOriginalImage(canvas, canvas.originalImage);
           }
         });
-      }
-    });
-
-    // 鼠标离开窗口
-    window.addEventListener('mouseout', () => {
-      this.hoverEffect = 0.0;
-      this.meshItems.forEach(item => {
-        item.uniforms.uIsHovered.value = 0;
+        
+        // 鼠标进入事件
+        container.addEventListener('mouseenter', () => {
+          this.activeCanvas = canvas;
+          if (!this.animationFrame) {
+            this.animate();
+          }
+        });
+        
+        // 鼠标移动事件
+        container.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          this.mouse = {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+          };
+        });
+        
+        // 鼠标离开事件
+        container.addEventListener('mouseleave', () => {
+          if (this.activeCanvas === canvas) {
+            this.activeCanvas = null;
+            // 恢复原始图像
+            if (canvas.originalImageData) {
+              canvas.ctx.putImageData(canvas.originalImageData, 0, 0);
+            }
+          }
+        });
       });
-    });
-  }
-
-  startRendering() {
-    const animate = () => {
-      requestAnimationFrame(animate);
-      
-      // 更新所有网格位置和尺寸
-      this.meshItems.forEach(item => item.update());
-      
-      // 更新hover效果
-      this.meshItems.forEach(item => {
-        item.uniforms.uHoverEffect.value = this.hoverEffect;
-        item.uniforms.uMouseEffect.value = this.hoverEffect;
-      });
-      
-      // 渲染场景
-      this.renderer.render(this.scene, this.camera);
-    };
+    }
     
-    animate();
-  }
-}
-
-// 添加节流函数
-function throttle(callback, limit) {
-  let waiting = false;
-  return function() {
-    if (!waiting) {
-      callback.apply(this, arguments);
-      waiting = true;
-      setTimeout(() => { waiting = false; }, limit);
+    drawOriginalImage(canvas, img) {
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // 保存原始图像数据
+      canvas.originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    }
+    
+    // 平滑过渡函数
+    smoothstep(edge0, edge1, x) {
+      // 将x限制在0-1范围内
+      x = Math.min(Math.max((x - edge0) / (edge1 - edge0), 0), 1);
+      // 使用平滑曲线过渡
+      return x * x * (3 - 2 * x);
+    }
+    
+    // 生成噪点值 (使用柏林噪声算法改进)
+    generateNoise(x, y, timeOffset) {
+      // 使用简单的伪随机算法生成噪点
+      const scaledX = x / this.noiseScale;
+      const scaledY = y / this.noiseScale;
+      const n = Math.sin(scaledX * 12.9898 + scaledY * 78.233 + timeOffset) * 43758.5453;
+      const noiseValue = (n - Math.floor(n)) * 2 - 1; // 范围-1到1
+      
+      // 根据密度参数决定是否显示噪点
+      if (Math.random() > this.noiseDensity) {
+        return 0;
+      }
+      
+      return noiseValue * this.noiseIntensity;
+    }
+    
+    applyDistortion(canvas, mouseX, mouseY) {
+      const ctx = canvas.getContext('2d');
+      const { width, height } = canvas;
+      const originalData = canvas.originalImageData;
+      const distortedData = ctx.createImageData(width, height);
+      
+      const radius = this.distortionRadius;
+      const strength = this.distortionStrength * 30;
+      
+      // 更新噪点动画偏移量
+      this.noiseOffset += this.noiseAnimationSpeed;
+      
+      // 遍历所有像素
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          // 计算与鼠标的距离
+          const dx = x - mouseX;
+          const dy = y - mouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          // 使用平滑过渡函数计算强度
+          const intensity = 1 - this.smoothstep(radius * this.smoothness, radius, distance);
+          
+          if (intensity > 0) {
+            // 计算波浪偏移，强度随距离减弱
+            const waveIntensity = strength * intensity * intensity;
+            const angle = Math.atan2(dy, dx);
+            const waveX = Math.sin(angle * 5 + Date.now() * this.animationSpeed) * waveIntensity;
+            const waveY = Math.cos(angle * 3 + Date.now() * this.animationSpeed * 0.6) * waveIntensity * 0.5;
+            
+            // 计算新位置
+            const newX = Math.min(width - 1, Math.max(0, x + waveX));
+            const newY = Math.min(height - 1, Math.max(0, y + waveY));
+            
+            // 获取原始像素数据
+            const origPos = (y * width + x) * 4;
+            const newPos = (Math.floor(newY) * width + Math.floor(newX)) * 4;
+            
+            // 生成噪点值
+            const noiseValue = this.generateNoise(x, y, this.noiseOffset);
+            
+            // 应用扭曲和噪点效果
+            distortedData.data[origPos] = Math.min(255, Math.max(0, originalData.data[newPos] + noiseValue * this.noiseRed)); // R
+            distortedData.data[origPos + 1] = Math.min(255, Math.max(0, originalData.data[newPos + 1] + noiseValue * this.noiseGreen)); // G
+            distortedData.data[origPos + 2] = Math.min(255, Math.max(0, originalData.data[newPos + 2] + noiseValue * this.noiseBlue)); // B
+            distortedData.data[origPos + 3] = originalData.data[newPos + 3]; // Alpha
+            
+            // 添加噪点层（半透明噪点）
+            if (noiseValue !== 0 && this.noiseAlpha > 0) {
+              const noiseAlpha = this.noiseAlpha * intensity;
+              const r = Math.random() * this.noiseRed;
+              const g = Math.random() * this.noiseGreen;
+              const b = Math.random() * this.noiseBlue;
+              
+              // 混合原始颜色和噪点颜色
+              distortedData.data[origPos] = distortedData.data[origPos] * (1 - noiseAlpha) + r * noiseAlpha;
+              distortedData.data[origPos + 1] = distortedData.data[origPos + 1] * (1 - noiseAlpha) + g * noiseAlpha;
+              distortedData.data[origPos + 2] = distortedData.data[origPos + 2] * (1 - noiseAlpha) + b * noiseAlpha;
+            }
+          } else {
+            // 扭曲半径外的区域保持原样
+            const pos = (y * width + x) * 4;
+            distortedData.data[pos] = originalData.data[pos];
+            distortedData.data[pos + 1] = originalData.data[pos + 1];
+            distortedData.data[pos + 2] = originalData.data[pos + 2];
+            distortedData.data[pos + 3] = originalData.data[pos + 3];
+          }
+        }
+      }
+      
+      ctx.putImageData(distortedData, 0, 0);
+    }
+    
+    animate() {
+      if (this.activeCanvas && this.activeCanvas.originalImageData) {
+        this.applyDistortion(this.activeCanvas, this.mouse.x, this.mouse.y);
+        this.animationFrame = requestAnimationFrame(() => this.animate());
+      } else {
+        this.animationFrame = null;
+      }
     }
   }
-}
-
-// 修改事件监听器
-document.addEventListener('mousemove', throttle((e) => {
-  // 原有鼠标移动逻辑
-}, 16)); // 限制为约60fps
-
-
-// 修改动画循环
-let lastTime = 0;
-const animate = (time) => {
-  requestAnimationFrame(animate);
   
-  // 限制更新频率
-  if (time - lastTime > 16) { // 约60fps
-    lastTime = time;
-    // 更新逻辑
-    this.renderer.render(this.scene, this.camera);
-  }
-};
-
-// 初始化效果
-window.addEventListener('load', () => {
-  new DistortionEffect();
-});
+  // 初始化
+  window.addEventListener('load', () => {
+    new DistortionEffect();
+  });
 

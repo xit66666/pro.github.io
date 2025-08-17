@@ -301,12 +301,12 @@ a {
 
 }
 
-canvas {
-    position: fixed;
-    z-index: 1o;
-    top: 0;
-    left: 0;
-      pointer-events: none;
+.distort-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 
@@ -374,7 +374,7 @@ canvas {
     top: 0;
     width: 100%;
     height: 100vh;
-    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/footer-bg.png);
+    background-image: url(../img/index/footer-bg.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 0 bottom;
