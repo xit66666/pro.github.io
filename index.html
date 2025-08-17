@@ -1,197 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>席婷作品集</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script src="https://unpkg.com/lenis@1.1.4/dist/lenis.min.js"></script>
-    <script src="https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/ScrollTrigger.min.js"></script>
-    <script src="https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/gsap.min.js"></script>
-    <script src='https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/SplitText.min.js'></script>
-    <script src="https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/scrollreveal.min.js"></script>
-    <script src="//at.alicdn.com/t/c/font_4624662_4paiwjcp3rc.js"></script>
-    <!-- <script src="./font/iconfont/iconfont.js"></script> -->
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
+  <meta charset="UTF-8">
+  <title>Hover Image Distortion Effect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      overscroll-behavior: none;
+      background-color: #ffffff;
+      font-family: sans-serif;
+    }
+
+    .project-items {
+      width: 100%;
+      display: flex;
+      gap: 2.5vw;
+      align-items: flex-start;
+      height: auto;
+      margin-top: 60px;
+    }
+
+    .project-item {
+      width: 100%;
+      position: relative;
+    }
+    
+    .project-item .img-box {
+      aspect-ratio: 5 / 3;
+    }
+
+    .distort-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border-radius: 16px;
+    }
+
+    .distort-canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .content h2 {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: capitalize;
+      transform: translateX(-39px);
+      color: var(--text-color-1);
+    }
+
+    .project-title .hidden-arrow {
+      color: var(--first-color);
+      font-size: 20px;
+      transform: scale(0);
+      margin-right: 16px;
+    }
+
+    .content p {
+      font-size: 14px;
+      color: var(--text-color-3);
+    }
+    
+    .hidden-arrow {
+      color: var(--text-color-1) !important;
+    }
+    
+    .project-item:hover .hidden-arrow {
+      transform: scale(1);
+      transition: all 0.4s ease-in-out;
+    }
+    .project-item:hover h2 {
+      transform: translateX(-6px);
+      transition: all 0.5s ease-in-out 0.1s;
+    }
+  </style>
 </head>
 <body>
-  <div id="cursor-dot"></div>
-  <div id="cursor-circle"></div>
-    <!---------------------------- 头部 ---------------------------->
-    <div class="header">
-      <div class="wrapper">
-          <!-- logo -->
-          <a href="./index.html" class="mylogo"></a>
-          <!-- 导航 -->
-          <ul class="nav">
-              <li><a href="visualization.html">可视化</a></li>
-              <li><a href="web.html">pc端</a></li>
-              <li><a href="moble.html">APP</a></li>
-          </ul>
-          <!-- 手机显示按钮 -->
-          <div class="burger">
-            <div class="line line-top smooth-animation"></div>
-            <div class="line line-middle "></div>
-            <div class="line line-bottom smooth-animation"></div>
-          </div>
+  <div class="project-items">
+      <div class="project-item">
+          <a href="./dashboard.html">
+              <div class="distort-container img-box">
+                  <canvas class="distort-canvas" data-src="./img/index/content/1.png"></canvas>
+              </div>
+              <div class="project-title">
+                  <svg class="icon hidden-arrow" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                  </svg>           
+                  <h2>[ moble design ] 移动端</h2>
+              </div>
+          </a>
       </div>
-    </div> 
-    <!------------------------ 1.作品集封面 ---------------------------->
 
-
-
-
-
-
-
-
-
-
-
-    <!------------------------ 1.作品集封面 ---------------------------->
-    <div class="works-container">
-        <img src="https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/4-6.png" alt="" class="designs">
-
-        <!--   雪碧图  -->
-        <div class="gif-lists wrapper">
-            <div class="gif-list">
-                <div class="sprite-house sprite"></div>
-                <div class="shadow"></div>
-                <h1>配电管理</h1>
-            </div>
-
-            <div class="gif-list">
-                <div class="sprite-wind sprite"></div>
-                <div class="shadow"></div>
-                <h1>发电管理</h1>
-            </div>
-
-            <div class="gif-list">
-                <div class="sprite-nuclear sprite"></div>
-                <div class="shadow"></div>
-                <h1>能源管理</h1>
-            </div>
-
-
-            <div class="gif-list">
-                <div class="sprite-charging sprite"></div>
-                <div class="shadow"></div>
-                <h1>充电运营</h1>
-            </div>
-
-            <div class="gif-list">
-                <div class="sprite-fire sprite"></div>
-                <div class="shadow"></div>
-                <h1>电气消防</h1>
-            </div>
-
-        </div>
-    </div>
-    <!---------------------------探索更多+footer----------------------------->
-    <div class="footer-box">
-        <div class="explore-container footer-mask">
-          <div class="wrapper">
-              <h1 class="section-title">more to explore</h1>
-              <div class="subtitle-box">
-                  <span class="highlight">⊹</span>
-                  <span class="section-Subtitle">探索更多</span>
+      <div class="project-item">
+          <a href="./visualization.html">
+              <div class="distort-container img-box">                           
+                  <canvas class="distort-canvas" data-src="https://framerusercontent.com/images/a5yPNhznhsxSJvjwQPmQU1gxII.png?scale-down-to=512"></canvas>
               </div>
-              <div class="project-items">
-                  <div class="project-item itemHover">
-                      <a href="./dashboard.html">
-                          <div class="distort-container img-box">
-                              <img src="https://framerusercontent.com/images/97PMdDPbcaeLsFpeZwWfHsYEnI.png" crossorigin="anonymous" alt="">
-                          </div>
-                          <div class="project-title">
-                              <svg class="icon hidden-arrow" aria-hidden="true">
-                                  <use xlink:href="#icon-arrow"></use>
-                              </svg>           
-                              <h2>[ moble design ] 移动端</h2>
-                          </div>
-                          <!-- <p>泛在物联绘制系统 X 泛在物联绘制系统</p> -->
-                      </a>
-                  </div>
-
-                  <div class="project-item itemHover">
-                      <a href="./visualization.html">
-                          <div class="distort-container img-box">                           
-                              <img src="https://framerusercontent.com/images/97PMdDPbcaeLsFpeZwWfHsYEnI.png" crossorigin="anonymous" alt="">
-                          </div>
-
-                          <div class="project-title">
-                              <svg class="icon hidden-arrow" aria-hidden="true">
-                                  <use xlink:href="#icon-arrow"></use>
-                              </svg>           
-                              <h2>[ visualization ] 可视化</h2>
-                          </div>
-                          <!-- <p>泛在物联绘制系统 X 泛在物联绘制系统</p> -->
-                      </a>
-                  </div>
-                  <div class="project-item itemHover">
-                      <a href="./visualization.html">
-                          <div class="distort-container img-box">                           
-                              <img src="https://framerusercontent.com/images/97PMdDPbcaeLsFpeZwWfHsYEnI.png" crossorigin="anonymous" alt="">
-                          </div>
-
-                          <div class="project-title">
-                              <svg class="icon hidden-arrow" aria-hidden="true">
-                                  <use xlink:href="#icon-arrow"></use>
-                              </svg>           
-                              <h2>[ visualization ] 可视化</h2>
-                          </div>
-                          <!-- <p>泛在物联绘制系统 X 泛在物联绘制系统</p> -->
-                      </a>
-                  </div>
+              <div class="project-title">
+                  <svg class="icon hidden-arrow" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                  </svg>           
+                  <h2>[ visualization ] 可视化</h2>
               </div>
-          </div>
-        </div>
+          </a>
+      </div>
+      
+      <div class="project-item">
+          <a href="./visualization.html">
+              <div class="distort-container img-box">                           
+                  <canvas class="distort-canvas" data-src="https://framerusercontent.com/images/k81gdfMzOziK19JNb4dUQoQFQ4Q.png?scale-down-to=512"></canvas>
+              </div>
+              <div class="project-title">
+                  <svg class="icon hidden-arrow" aria-hidden="true">
+                      <use xlink:href="#icon-arrow"></use>
+                  </svg>           
+                  <h2>[ visualization ] 可视化</h2>
+              </div>
+          </a>
+      </div>
+  </div>
+
+  <script>
+    class DistortionEffect {
+      constructor() {
+        // 可调节参数区域 ============================================
+        this.distortionRadius = 150; // 扭曲半径(像素)
+        this.distortionStrength = 0.3; // 扭曲强度(0-1)
+        this.rgbSplitAmount = 8; // RGB分离程度(像素)
+        this.animationSpeed = 0.05; // 动画速度(0-1)
+        // ========================================================
         
-        <!--------- 7.联系我 ----------->
-        <div class="footer foot-ripples" id="footerContainer">
-            <div class="footer-email">
-                <h2>578742871@qq.com</h2>
-            </div>        
-            <h1>Let's start</h1>
-            <div class="text-QRcode">
-                <h1>creating &nbsp;</h1>
-                <h1>something</h1>
-                <div class="QRcode-box smooth-animation">
-                    <img src="./img/index/portfolio-lable-x.png" alt="" class="footer-label-x smooth-animation">
-                    <img src="./img/index/QRcode.png" alt="" class="QRcode smooth-animation QRcode-tag">
-                    <img src="./img/index/QRcode-string.png" alt="" class="QRcode smooth-animation">
-                </div>
-            </div>
-            <h1 class="text-final">together.</h1>
-            <p>I'm ready to work on excinting projects.</p>
-            <!-- <h5>contact me</h5> -->
+        this.canvases = [...document.querySelectorAll('.distort-canvas')];
+        this.activeCanvas = null;
+        this.mouse = { x: 0, y: 0 };
+        this.animationFrame = null;
+        
+        this.init();
+      }
+      
+      init() {
+        // 初始化所有canvas
+        this.canvases.forEach((canvas, index) => {
+          canvas.id = `canvas-${index}`;
+          const container = canvas.parentElement;
+          const imgSrc = canvas.dataset.src;
+          
+          // 设置canvas尺寸
+          const resizeCanvas = () => {
+            const { width, height } = container.getBoundingClientRect();
+            canvas.width = width;
+            canvas.height = height;
+          };
+          
+          // 加载图像
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.src = imgSrc;
+          
+          img.onload = () => {
+            resizeCanvas();
+            this.drawOriginalImage(canvas, img);
             
-            <ul id="navLinks" class="navLinks" >
-
-                <li>
-                    <a href="https://www.zcool.com.cn/u/14729612">
-                        <svg class="icon" aria-hidden="true">
-                            <use xlink:href="#icon-zhanku1"></use>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
-            <img src="./img/index/footer-img1.png" alt="" class="footer-img1 smooth-animation">
-            <img src="./img/index/footer-img2.png" alt="" class="footer-img2 smooth-animation">
-
-        </div>
-
-    </div>
-
-
-    <!-- 引入JS文件 --> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <!-- 波纹 -->
-    <script src='https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/ripple/jquery.min.js'></script>
-    <script src='https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/libs/ripple/ripples.js'></script>
-    <script src="./js/media.js"></script>
- <script>
-   
-    </script>
+            // 保存原始图像数据
+            canvas.originalImage = img;
+            canvas.ctx = canvas.getContext('2d');
+            canvas.originalImageData = canvas.ctx.getImageData(0, 0, canvas.width, canvas.height);
+          };
+          
+          // 窗口大小变化时重绘
+          window.addEventListener('resize', () => {
+            resizeCanvas();
+            if (canvas.originalImage) {
+              this.drawOriginalImage(canvas, canvas.originalImage);
+            }
+          });
+          
+          // 鼠标进入事件
+          container.addEventListener('mouseenter', () => {
+            this.activeCanvas = canvas;
+            if (!this.animationFrame) {
+              this.animate();
+            }
+          });
+          
+          // 鼠标移动事件
+          container.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            this.mouse = {
+              x: e.clientX - rect.left,
+              y: e.clientY - rect.top
+            };
+          });
+          
+          // 鼠标离开事件
+          container.addEventListener('mouseleave', () => {
+            if (this.activeCanvas === canvas) {
+              this.activeCanvas = null;
+              // 恢复原始图像
+              if (canvas.originalImageData) {
+                canvas.ctx.putImageData(canvas.originalImageData, 0, 0);
+              }
+            }
+          });
+        });
+      }
+      
+      drawOriginalImage(canvas, img) {
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        // 保存原始图像数据
+        canvas.originalImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      }
+      
+      applyDistortion(canvas, mouseX, mouseY) {
+        const ctx = canvas.getContext('2d');
+        const { width, height } = canvas;
+        const originalData = canvas.originalImageData;
+        const distortedData = ctx.createImageData(width, height);
+        
+        const radius = this.distortionRadius;
+        const strength = this.distortionStrength * 30;
+        const rgbSplit = this.rgbSplitAmount;
+        
+        // 遍历所有像素
+        for (let y = 0; y < height; y++) {
+          for (let x = 0; x < width; x++) {
+            // 计算与鼠标的距离
+            const dx = x - mouseX;
+            const dy = y - mouseY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            // 如果在扭曲半径内
+            if (distance < radius) {
+              // 计算扭曲强度(距离越近强度越大)
+              const intensity = 1 - distance / radius;
+              const waveIntensity = strength * intensity * intensity;
+              
+              // 计算波浪偏移
+              const angle = Math.atan2(dy, dx);
+              const waveX = Math.sin(angle * 5 + Date.now() * 0.005) * waveIntensity;
+              const waveY = Math.cos(angle * 3 + Date.now() * 0.003) * waveIntensity * 0.5;
+              
+              // 计算新位置
+              const newX = Math.min(width - 1, Math.max(0, x + waveX));
+              const newY = Math.min(height - 1, Math.max(0, y + waveY));
+              
+              // 获取原始像素数据
+              const origPos = (y * width + x) * 4;
+              const newPos = (Math.floor(newY) * width + Math.floor(newX)) * 4;
+              
+              // 应用RGB分离效果
+              distortedData.data[origPos] = originalData.data[newPos]; // R
+              distortedData.data[origPos + 1] = originalData.data[newPos + 1 + (y % 2 === 0 ? rgbSplit : -rgbSplit)]; // G
+              distortedData.data[origPos + 2] = originalData.data[newPos + 2 + (x % 2 === 0 ? -rgbSplit : rgbSplit)]; // B
+              distortedData.data[origPos + 3] = 255; // Alpha
+            } else {
+              // 扭曲半径外的区域保持原样
+              const pos = (y * width + x) * 4;
+              distortedData.data[pos] = originalData.data[pos];
+              distortedData.data[pos + 1] = originalData.data[pos + 1];
+              distortedData.data[pos + 2] = originalData.data[pos + 2];
+              distortedData.data[pos + 3] = originalData.data[pos + 3];
+            }
+          }
+        }
+        
+        ctx.putImageData(distortedData, 0, 0);
+      }
+      
+      animate() {
+        if (this.activeCanvas && this.activeCanvas.originalImageData) {
+          this.applyDistortion(this.activeCanvas, this.mouse.x, this.mouse.y);
+          this.animationFrame = requestAnimationFrame(() => this.animate());
+        } else {
+          this.animationFrame = null;
+        }
+      }
+    }
+    
+    // 初始化
+    window.addEventListener('load', () => {
+      new DistortionEffect();
+    });
+  </script>
 </body>
 </html>
