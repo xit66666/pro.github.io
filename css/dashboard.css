@@ -52,10 +52,10 @@ body {
 }
 
 .sprite-nuclear {
-  background-image: url(../img/dashboard/gif/nuclear.png);
+  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/nuclear.png);
 }
 .sprite-house {
-  background-image: url(../img/dashboard/gif/house.png);
+  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/house.png);
 }
 
 @keyframes play-sprite-nuclear {
@@ -98,7 +98,7 @@ body {
 
 
 .sprite-wind {
-  background-image: url(../img/dashboard/gif/wind-power.png);
+  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/wind-power.png);
 }
 
 @keyframes play-sprite-wind {
@@ -107,7 +107,7 @@ body {
 }
 
 .sprite-charging {
-    background-image: url(../img/dashboard/gif/charging-station.png);
+    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/charging-station.png);
 }
 
 @keyframes play-sprite-charging {
@@ -116,7 +116,7 @@ body {
 }
 
 .sprite-fire {
-  background-image: url(../img/dashboard/gif/fire-fighting.png);
+  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/fire-fighting.png);
 }
 
 @keyframes play-sprite-fire {
