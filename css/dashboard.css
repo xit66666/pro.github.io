@@ -52,10 +52,10 @@ body {
 }
 
 .sprite-nuclear {
-  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/nuclear.png);
+  background-image: url(https://framerusercontent.com/images/hdFGmp5O9RmXlJkuVHy0MQoyfc.png);
 }
 .sprite-house {
-  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/house.png);
+  background-image: url(https://framerusercontent.com/images/H8GZjtFz8kNwadc1bP8XJMiqDI.png);
 }
 
 @keyframes play-sprite-nuclear {
@@ -98,7 +98,7 @@ body {
 
 
 .sprite-wind {
-  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/wind-power.png);
+  background-image: url(https://framerusercontent.com/images/hor8iVaa6vD2F3Yp2bUpf3U60wQ.png);
 }
 
 @keyframes play-sprite-wind {
@@ -107,7 +107,7 @@ body {
 }
 
 .sprite-charging {
-    background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/charging-station.png);
+    background-image: url(https://framerusercontent.com/images/8PzFn32DvuWHShDSkPKsugx8Kk.png);
 }
 
 @keyframes play-sprite-charging {
@@ -116,7 +116,7 @@ body {
 }
 
 .sprite-fire {
-  background-image: url(https://pub-ac179314a4564e7fb50bc94b77165669.r2.dev/%E6%B5%8B%E8%AF%95/gif/fire-fighting.png);
+  background-image: url(https://framerusercontent.com/images/irXYLJjClYz7W1JVGzNqptSqSsk.png);
 }
 
 @keyframes play-sprite-fire {
